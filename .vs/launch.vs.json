@@ -1,0 +1,19 @@
+{
+	"version": "0.2.1",
+	"defaults": {},
+	"configurations": [
+		{
+			"type": "default",
+			"project": "F:\\Godot 4.4\\\\Godot_v4.4-stable_win64.exe",
+			"name": "Godot Game",
+			"args": [ "--path", "H:\\Unreal\\Projects\\SpaceSurfer\\surfer" ]
+		},
+
+		{
+			"type": "default",
+			"project": "F:\\Godot 4.4\\\\Godot_v4.4-stable_win64.exe",
+			"name": "Godot Editor",
+			"args": [ "H:\\Unreal\\Projects\\SpaceSurfer\\surfer\\project.godot" ]
+		}
+	]
+}
