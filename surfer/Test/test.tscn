@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgc4kb5os34mm"]
+
+[ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
+[ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
+
+[node name="Test" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_yfa23")]
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05375, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = ExtResource("2_lxp54")

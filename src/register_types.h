@@ -1,4 +1,4 @@
-#ifndef EXAMPLE_REGISTER_TYPES_H
+#ifndef EXAMPLE_REGISTER_TYPES_H //replace with pragma once probably
 #define EXAMPLE_REGISTER_TYPES_H
 
 void initialize_gdextension_types();

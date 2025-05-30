@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://pnt7ablvnmmm"]
+
+[ext_resource type="BoxMesh" uid="uid://bu0xv6eb2fyo6" path="res://Player/placeholder.tres" id="1_l8h54"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l8h54"]
+size = Vector3(0.8, 1.6, 0.6)
+
+[node name="Player" type="Node3D"]
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9677, 0.252103, 0, -0.252103, 0.9677, 0, 1.74285, 3.16912)
+current = true
+fov = 90.3
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+mass = 80.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_l8h54")
+
+[node name="PlayerMovement" type="PlayerMovement" parent="RigidBody3D" node_paths=PackedStringArray("Player Rigid Body")]
+"Player Rigid Body" = NodePath("..")
+"Jump Impulse" = 425.0
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D/PlayerMovement"]
+mesh = ExtResource("1_l8h54")
+skeleton = NodePath("../../../..")
+
+[node name="PlayerEVABackpack" type="MeshInstance3D" parent="RigidBody3D/PlayerMovement/PlayerMesh"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.11669, 0.475278)
+mesh = ExtResource("1_l8h54")
