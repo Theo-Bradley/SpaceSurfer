@@ -13,6 +13,10 @@ current = true
 fov = 90.3
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 mass = 80.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
@@ -20,12 +24,16 @@ shape = SubResource("BoxShape3D_l8h54")
 
 [node name="PlayerMovement" type="PlayerMovement" parent="RigidBody3D" node_paths=PackedStringArray("Player Rigid Body")]
 "Player Rigid Body" = NodePath("..")
-"Jump Impulse" = 425.0
+"Jump Impulse" = 5.0
+"Move Speed" = 12.5
+"Lane Width" = 3.0
+"Easing Start" = 0.5
+"Movement Stop" = 0.5
 
-[node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D/PlayerMovement"]
+[node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = ExtResource("1_l8h54")
-skeleton = NodePath("../../../..")
+skeleton = NodePath("../../..")
 
-[node name="PlayerEVABackpack" type="MeshInstance3D" parent="RigidBody3D/PlayerMovement/PlayerMesh"]
+[node name="PlayerEVABackpack" type="MeshInstance3D" parent="RigidBody3D/PlayerMesh"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.11669, 0.475278)
 mesh = ExtResource("1_l8h54")
