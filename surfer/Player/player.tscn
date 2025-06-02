@@ -7,10 +7,11 @@ size = Vector3(0.8, 1.6, 0.6)
 
 [node name="Player" type="Node3D"]
 
-[node name="PlayerCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.9677, 0.252103, 0, -0.252103, 0.9677, 0, 1.74285, 3.16912)
-current = true
-fov = 90.3
+[node name="FollowCamera" type="FollowCamera" parent="." node_paths=PackedStringArray("Player Rigid Body")]
+"Player Rigid Body" = NodePath("../RigidBody3D")
+"Camera Offset" = Vector3(0, 1.75, 3.2)
+transform = Transform3D(1, 0, 0, 0, 0.9677, 0.252103, 0, -0.252103, 0.9677, 0, 1.75, 3.2)
+fov = 85.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 axis_lock_linear_z = true

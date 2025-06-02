@@ -3,8 +3,6 @@
 #include "godot_cpp/classes/node3d.hpp"
 #include "godot_cpp/classes/input.hpp"
 #include "godot_cpp/classes/rigid_body3d.hpp"
-#include "godot_cpp/classes/physics_direct_body_state3d.hpp"
-///#include "godot_cpp/core/math.hpp"
 
 using namespace godot;
 
