@@ -27,7 +27,7 @@ shape = SubResource("BoxShape3D_l8h54")
 "Jump Impulse" = 5.0
 "Move Speed" = 12.5
 "Lane Width" = 3.0
-"Easing Start" = 0.5
+"Easing Start" = 1.0
 "Movement Stop" = 0.5
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D"]

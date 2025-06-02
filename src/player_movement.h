@@ -51,6 +51,10 @@ public:
 	void set_movementStop(float stop);
 	float get_movementStop() const;
 
+	int desiredLane = 1;
+	int currentLane = 1;
+	void ChangeDesiredLane(MovementDirection dir);
+
 	void _process(double delta) override;
 	void _physics_process(double delta) override;
 };

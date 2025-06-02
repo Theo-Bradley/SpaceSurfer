@@ -62,26 +62,38 @@ void PlayerMovement::_process(double delta)
 	if (input->is_action_just_pressed("Left"))
 	{
 		moveDirection = Left;
+		ChangeDesiredLane(moveDirection);
 	}
 	if (input->is_action_just_pressed("Right"))
 	{
 		moveDirection = Right;
+		ChangeDesiredLane(moveDirection);
 	}
 }
 
 void PlayerMovement::_physics_process(double delta)
 {
 	int change = moveDirection == Left ? -1 : 1;
-	if (moveDirection == None)
+	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2))
 		change = 0;
-	int lane = moveDirection == Left ? 0 : 1;
-	float dist = Math::absf(lane * laneWidth - playerRigidBody->get_global_position().x);
+	float dist = Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x);
 	float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
 	float v = moveSpeed * easing * change;
 	float u = playerRigidBody->get_linear_velocity().x;
 	playerRigidBody->apply_central_impulse(Vector3((v - u) * playerRigidBody->get_mass(), 0.f, 0.f));
 	if (easing <= movementStop)
+	{
 		moveDirection = None;
+		currentLane = desiredLane;
+	}
+}
+
+void PlayerMovement::ChangeDesiredLane(MovementDirection dir)
+{
+	if (dir == Left && desiredLane > 0)
+		desiredLane--;
+	if (dir == Right && desiredLane < 2)
+		desiredLane++;
 }
 
 //getters and setters for ClassDB
