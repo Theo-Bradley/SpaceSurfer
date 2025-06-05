@@ -20,6 +20,9 @@ protected:
 	};
 
 	MovementDirection moveDirection;
+	bool isJumping = false; //is the player jumping
+	bool oldIsJumping = false; //was the player jumping on the last frame
+	bool isFalling = false; //is the player jetpacking down
 
 public:
 	PlayerMovement();
@@ -52,6 +55,10 @@ public:
 	int desiredLane = 1;
 	int currentLane = 1;
 	void ChangeDesiredLane(MovementDirection dir);
+
+	float fallingForce = 0.0f;
+	void set_fallingForce(float force);
+	float get_fallingForce();
 
 	void _process(double delta) override;
 	void _physics_process(double delta) override;

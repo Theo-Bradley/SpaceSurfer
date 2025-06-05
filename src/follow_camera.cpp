@@ -18,10 +18,6 @@ void FollowCamera::_bind_methods()
 	ADD_PROPERTY(PropertyInfo(Variant::VECTOR3, "Camera Offset"), "set_cameraOffset", "get_cameraOffset");
 }
 
-FollowCamera::FollowCamera()
-{
-}
-
 void FollowCamera::_process(double delta)
 {
 	if (playerRigidBody != nullptr)

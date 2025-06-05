@@ -20,6 +20,11 @@ void PlayerMovement::_bind_methods()
 
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Jump Impulse"), "set_jumpForce", "get_jumpForce");
 
+	ClassDB::bind_method(D_METHOD("get_fallingForce"), &PlayerMovement::get_fallingForce);
+	ClassDB::bind_method(D_METHOD("set_fallingForce", "stop"), &PlayerMovement::set_fallingForce);
+
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Falling Force"), "set_fallingForce", "get_fallingForce");
+
 	ClassDB::bind_method(D_METHOD("get_moveSpeed"), &PlayerMovement::get_moveSpeed);
 	ClassDB::bind_method(D_METHOD("set_moveSpeed", "speed"), &PlayerMovement::set_moveSpeed);
 
@@ -54,10 +59,14 @@ PlayerMovement::~PlayerMovement()
 
 void PlayerMovement::_process(double delta)
 {
-	if (input->is_action_just_pressed("Jump"))
+	if (input->is_action_pressed("Jump"))
 	{
-		print_line("jumping");
-		playerRigidBody->apply_central_impulse(Vector3(0.f, jumpForce * playerRigidBody->get_mass(), 0.f));
+		isJumping = true;
+		isFalling = false;
+	}
+	if (input->is_action_pressed("Jump") == false)
+	{
+		isFalling = true;
 	}
 	if (input->is_action_just_pressed("Left"))
 	{
@@ -73,6 +82,7 @@ void PlayerMovement::_process(double delta)
 
 void PlayerMovement::_physics_process(double delta)
 {
+	//lane changing code:
 	int change = moveDirection == Left ? -1 : 1;
 	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2))
 		change = 0;
@@ -86,6 +96,20 @@ void PlayerMovement::_physics_process(double delta)
 		moveDirection = None;
 		currentLane = desiredLane;
 	}
+	//jumping code:
+	if (isJumping == true && oldIsJumping == false) //if we just jumped
+	{
+		playerRigidBody->apply_central_impulse(Vector3(0.f, jumpForce * playerRigidBody->get_mass(), 0.f));
+	}
+	if (oldIsJumping == true && isJumping == true && playerRigidBody->get_contact_count() > 0) //detect if we are touching something
+	{//if so, assume we are grounded
+		isJumping = false;
+	}
+	if (isJumping == true && isFalling == true)
+	{
+		playerRigidBody->apply_central_impulse(Vector3(0.0f, fallingForce * playerRigidBody->get_mass(), 0.0f)); //add the jetpacking force
+	}
+	oldIsJumping = isJumping;
 }
 
 void PlayerMovement::ChangeDesiredLane(MovementDirection dir)
@@ -154,4 +178,13 @@ void PlayerMovement::set_movementStop(float stop)
 float PlayerMovement::get_movementStop() const
 {
 	return movementStop;
+}
+
+void PlayerMovement::set_fallingForce(float force)
+{
+	fallingForce = force;
+}
+float PlayerMovement::get_fallingForce()
+{
+	return fallingForce;
 }

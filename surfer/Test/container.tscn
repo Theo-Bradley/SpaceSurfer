@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv5jmekf1xc25"]
+
+[ext_resource type="ArrayMesh" uid="uid://dw2vwnnk5mkop" path="res://Test/conatiner.obj" id="1_h0n4d"]
+
+[node name="Container" type="Node3D"]
+
+[node name="MovingObject" type="MovingObject" parent="."]
+"Per Frame Offset" = 3.0
+transform = Transform3D(1.00001, 0, 5.4948e-08, 0, 1, 0, -5.4948e-08, 0, 1.00001, 0, 0, 0)
+
+[node name="Conatiner" type="MeshInstance3D" parent="MovingObject"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.12018, -1.00375, -0.0579767)
+mesh = ExtResource("1_h0n4d")
+skeleton = NodePath("../../../..")

@@ -12,7 +12,7 @@ protected:
 	static void _bind_methods();
 
 public:
-	FollowCamera();
+	FollowCamera() = default;
 	~FollowCamera() override = default;
 
 	void _process(double delta) override;
