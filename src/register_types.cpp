@@ -8,6 +8,7 @@
 #include "player_movement.h"
 #include "follow_camera.h"
 #include "moving_object.h"
+#include "spawn_node.h"
 
 using namespace godot;
 
@@ -20,6 +21,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	GDREGISTER_RUNTIME_CLASS(PlayerMovement);
 	GDREGISTER_CLASS(FollowCamera);
 	GDREGISTER_RUNTIME_CLASS(MovingObject);
+	GDREGISTER_RUNTIME_CLASS(SpawnNode);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
