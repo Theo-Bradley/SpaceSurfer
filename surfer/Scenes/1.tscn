@@ -1,16 +1,40 @@
-[gd_scene load_steps=2 format=3 uid="uid://du0kd3xshgxlv"]
+[gd_scene load_steps=3 format=3 uid="uid://du0kd3xshgxlv"]
 
-[ext_resource type="ArrayMesh" uid="uid://dw2vwnnk5mkop" path="res://Test/conatiner.obj" id="1_bgthn"]
+[ext_resource type="PackedScene" uid="uid://dv5jmekf1xc25" path="res://Test/container.tscn" id="1_30x3x"]
+[ext_resource type="PackedScene" uid="uid://lsx6j6sfhjnb" path="res://Coin/Coin.tscn" id="2_1rg46"]
 
-[node name="Container" type="Node3D"]
+[node name="1" type="Node3D"]
 
 [node name="MovingObject" type="MovingObject" parent="."]
 "Per Frame Offset" = 3.0
 transform = Transform3D(1.00001, 0, 5.4948e-08, 0, 1, 0, -5.4948e-08, 0, 1.00001, 0, 0, 0)
 
-[node name="Conatiner" type="MeshInstance3D" parent="MovingObject"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.12018, -1.00375, -0.0579767)
-mesh = ExtResource("1_bgthn")
-skeleton = NodePath("../../../..")
+[node name="Container" parent="MovingObject" instance=ExtResource("1_30x3x")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0, 0, 0)
 
-[node name="SpawnNode" type="SpawnNode" parent="MovingObject"]
+[node name="Container2" parent="MovingObject" instance=ExtResource("1_30x3x")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 2.52194, 0, -9.36042)
+
+[node name="Container3" parent="MovingObject" instance=ExtResource("1_30x3x")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 4.98225, 0, 2.73762e-07)
+
+[node name="SpawnNode" type="SpawnNode" parent="MovingObject" node_paths=PackedStringArray("Root Node")]
+"Spawn Distance" = 5.0
+"Despawn Distance" = 2.0
+"Root Node" = NodePath("../..")
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0, 0, -12.347)
+
+[node name="Coin" parent="MovingObject" instance=ExtResource("2_1rg46")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 2.55213, 2.41932, -7.48742)
+
+[node name="Coin2" parent="MovingObject" instance=ExtResource("2_1rg46")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, 1.18564)
+
+[node name="Coin3" parent="MovingObject" instance=ExtResource("2_1rg46")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, -1.23006)
+
+[node name="Coin4" parent="MovingObject" instance=ExtResource("2_1rg46")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, -2.97836)
+
+[node name="Coin5" parent="MovingObject" instance=ExtResource("2_1rg46")]
+transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0.228203, 2.41932, 0.143517)

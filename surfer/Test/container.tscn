@@ -4,16 +4,7 @@
 
 [node name="Container" type="Node3D"]
 
-[node name="MovingObject" type="MovingObject" parent="."]
-"Per Frame Offset" = 3.0
-transform = Transform3D(1.00001, 0, 5.4948e-08, 0, 1, 0, -5.4948e-08, 0, 1.00001, 0, 0, 0)
-
-[node name="Conatiner" type="MeshInstance3D" parent="MovingObject"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.12018, -1.00375, -0.0579767)
+[node name="Conatiner" type="MeshInstance3D" parent="."]
+transform = Transform3D(-9.86598e-08, 0, 1.00001, 0, 1, 0, -1.00001, 0, -9.86598e-08, 3.12021, -1.00375, -0.0579775)
 mesh = ExtResource("1_h0n4d")
-skeleton = NodePath("../../../..")
-
-[node name="SpawnNode" type="SpawnNode" parent="MovingObject" node_paths=PackedStringArray("Root Node")]
-"Spawn Distance" = 5.0
-"Despawn Distance" = 2.0
-"Root Node" = NodePath("../..")
+skeleton = NodePath("../../..")

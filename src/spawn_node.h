@@ -7,6 +7,7 @@
 #include "godot_cpp/classes/json.hpp"
 #include "godot_cpp/classes/random_number_generator.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
+#include "godot_cpp/classes/scene_tree.hpp"
 
 using namespace godot;
 

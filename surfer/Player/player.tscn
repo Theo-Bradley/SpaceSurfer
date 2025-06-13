@@ -28,7 +28,7 @@ shape = SubResource("BoxShape3D_l8h54")
 [node name="PlayerMovement" type="PlayerMovement" parent="RigidBody3D" node_paths=PackedStringArray("Player Rigid Body")]
 "Player Rigid Body" = NodePath("..")
 "Jump Impulse" = 5.0
-"Falling Force" = -5.0
+"Falling Force" = -1.5
 "Move Speed" = 12.5
 "Lane Width" = 3.0
 "Easing Start" = 1.0

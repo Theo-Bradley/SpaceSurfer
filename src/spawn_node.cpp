@@ -41,7 +41,6 @@ void SpawnNode::_physics_process(double delta)
 		if (get_global_position().z > -spawnDistance) //> - because objects move +z towards camera from -z and we using position not length
 		{
 			spawnNewTree();
-			print_line("spawning");
 		}
 	}
 
@@ -58,11 +57,11 @@ void SpawnNode::spawnNewTree()
 	{
 		int sceneNum = rng->randi_range(1, numScenes);
 		String path = String("res://Scenes/") + String(std::to_string(sceneNum).c_str()) + String(".tscn");
-		print_line(path);
 		Node* scene = ((Ref<PackedScene>)ResourceLoader::get_singleton()->load(path))->instantiate();
 		Node3D* positionNode = memnew(Node3D);
+		get_tree()->get_current_scene()->add_child(positionNode);
 		positionNode->add_child(scene);
-		positionNode->set_global_position(get_global_position() + Vector3(0.f, 1.f, 0.f));
+		positionNode->set_global_position(get_global_position());
 		hasSpawned = true;
 	}
 	else
