@@ -5,36 +5,36 @@
 
 [node name="1" type="Node3D"]
 
-[node name="MovingObject" type="MovingObject" parent="."]
-"Per Frame Offset" = 3.0
-transform = Transform3D(1.00001, 0, 5.4948e-08, 0, 1, 0, -5.4948e-08, 0, 1.00001, 0, 0, 0)
+[node name="Container" parent="." instance=ExtResource("1_30x3x")]
 
-[node name="Container" parent="MovingObject" instance=ExtResource("1_30x3x")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0, 0, 0)
+[node name="Container2" parent="." instance=ExtResource("1_30x3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52196, 0, -9.36051)
 
-[node name="Container2" parent="MovingObject" instance=ExtResource("1_30x3x")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 2.52194, 0, -9.36042)
+[node name="Container3" parent="." instance=ExtResource("1_30x3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9823, 0, 2.84217e-14)
 
-[node name="Container3" parent="MovingObject" instance=ExtResource("1_30x3x")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 4.98225, 0, 2.73762e-07)
-
-[node name="SpawnNode" type="SpawnNode" parent="MovingObject" node_paths=PackedStringArray("Root Node")]
+[node name="SpawnNode" type="SpawnNode" parent="." node_paths=PackedStringArray("Root Node")]
 "Spawn Distance" = 5.0
 "Despawn Distance" = 2.0
-"Root Node" = NodePath("../..")
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0, 0, -12.347)
+"Root Node" = NodePath("..")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78443e-07, 0, -12.3471)
 
-[node name="Coin" parent="MovingObject" instance=ExtResource("2_1rg46")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 2.55213, 2.41932, -7.48742)
+[node name="Coin" parent="." instance=ExtResource("2_1rg46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55216, 2.41932, -7.48749)
+visible = false
 
-[node name="Coin2" parent="MovingObject" instance=ExtResource("2_1rg46")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, 1.18564)
+[node name="Coin2" parent="." instance=ExtResource("2_1rg46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, 1.18565)
+visible = false
 
-[node name="Coin3" parent="MovingObject" instance=ExtResource("2_1rg46")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, -1.23006)
+[node name="Coin3" parent="." instance=ExtResource("2_1rg46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -1.23007)
+visible = false
 
-[node name="Coin4" parent="MovingObject" instance=ExtResource("2_1rg46")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 5.04946, 2.41932, -2.97836)
+[node name="Coin4" parent="." instance=ExtResource("2_1rg46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -2.97839)
+visible = false
 
-[node name="Coin5" parent="MovingObject" instance=ExtResource("2_1rg46")]
-transform = Transform3D(0.99999, 0, -5.49469e-08, 0, 1, 0, 5.49469e-08, 0, 0.99999, 0.228203, 2.41932, 0.143517)
+[node name="Coin5" parent="." instance=ExtResource("2_1rg46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228205, 2.41932, 0.143518)
+visible = false

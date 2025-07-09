@@ -7,7 +7,7 @@
 
 #include "player_movement.h"
 #include "follow_camera.h"
-#include "moving_object.h"
+#include "moving_obstacle.h"
 #include "spawn_node.h"
 #include "coin.h"
 #include "coin_manager.h"
@@ -22,7 +22,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 
 	GDREGISTER_RUNTIME_CLASS(PlayerMovement);
 	GDREGISTER_CLASS(FollowCamera);
-	GDREGISTER_RUNTIME_CLASS(MovingObject);
+	GDREGISTER_RUNTIME_CLASS(MovingObstacle);
 	GDREGISTER_RUNTIME_CLASS(SpawnNode);
 	GDREGISTER_RUNTIME_CLASS(Coin);
 	GDREGISTER_RUNTIME_CLASS(CoinManager);

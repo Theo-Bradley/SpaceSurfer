@@ -25,10 +25,10 @@ windows.x86_64.double.debug = "./windows/SpaceSurfer-lib.windows.template_debug.
 windows.x86_64.single.release = "./windows/SpaceSurfer-lib.windows.template_release.x86_64.dll"
 windows.x86_64.double.release = "./windows/SpaceSurfer-lib.windows.template_release.x86_64.double.dll"
 
-linux.x86_64.single.debug = "./linux/SpaceSurfer-lib.linux.template_debug.x86_64.so"
-linux.x86_64.double.debug = "./linux/SpaceSurfer-lib.linux.template_debug.x86_64.double.so"
-linux.x86_64.single.release = "./linux/SpaceSurfer-lib.linux.template_release.x86_64.so"
-linux.x86_64.double.release = "./linux/SpaceSurfer-lib.linux.template_release.x86_64.double.so"
+linux.x86_64.single.debug = "./linux/libSpaceSurfer-lib.linux.template_debug.x86_64.so"
+linux.x86_64.double.debug = "./linux/libSpaceSurfer-lib.linux.template_debug.x86_64.double.so"
+linux.x86_64.single.release = "./linux/libSpaceSurfer-lib.linux.template_release.x86_64.so"
+linux.x86_64.double.release = "./linux/libSpaceSurfer-lib.linux.template_release.x86_64.double.so"
 
 linux.arm64.single.debug = "./linux/SpaceSurfer-lib.linux.template_debug.arm64.so"
 linux.arm64.double.debug = "./linux/SpaceSurfer-lib.linux.template_debug.arm64.double.so"

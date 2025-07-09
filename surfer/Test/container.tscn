@@ -1,10 +1,33 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv5jmekf1xc25"]
+[gd_scene load_steps=4 format=3 uid="uid://dv5jmekf1xc25"]
 
-[ext_resource type="ArrayMesh" uid="uid://dw2vwnnk5mkop" path="res://Test/conatiner.obj" id="1_h0n4d"]
+[ext_resource type="ArrayMesh" uid="uid://ehod8c10336s" path="res://Assets/Models/OBJ format/monorail_trainPassenger.obj" id="1_h0n4d"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h0n4d"]
+size = Vector3(1.25, 1.5, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcpsd"]
+size = Vector3(1, 1.15692, 0.73877)
 
 [node name="Container" type="Node3D"]
 
-[node name="Conatiner" type="MeshInstance3D" parent="."]
-transform = Transform3D(-9.86598e-08, 0, 1.00001, 0, 1, 0, -1.00001, 0, -9.86598e-08, 3.12021, -1.00375, -0.0579775)
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -0.00623119)
+shape = SubResource("BoxShape3D_h0n4d")
+
+[node name="Conatiner2" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
 mesh = ExtResource("1_h0n4d")
-skeleton = NodePath("../../..")
+
+[node name="Conatiner" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
+mesh = ExtResource("1_h0n4d")
+
+[node name="Area3D" type="Area3D" parent="RigidBody3D"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580321, 1.72452)
+shape = SubResource("BoxShape3D_jcpsd")
+debug_color = Color(0.996212, 0, 0.191076, 0.42)
