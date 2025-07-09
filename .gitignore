@@ -49,3 +49,6 @@ out/*
 .vs/*
 !.vs/launch.vs.json
 !.vs/ProjectSettings.json
+
+#ignore src obj files but not asset obj files
+src/*.obj
