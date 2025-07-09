@@ -23,7 +23,7 @@ void MovingObstacle::_physics_process(double delta)
 		{
 			for (int i = 0; i < collider->get_overlapping_bodies().size(); i++)
 			{
-				//if (((Node3D)collider->get_overlapping_bodies()[i]).get_parent())
+				print_line("hit");
 			}
 		}
 	}

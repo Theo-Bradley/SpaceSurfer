@@ -60,6 +60,11 @@ public:
 	void set_fallingForce(float force);
 	float get_fallingForce();
 
+	float runSpeed = 0.0f;
+	void set_runSpeed(float speed);
+	float get_runSpeed();
+
+
 	void _process(double delta) override;
 	void _physics_process(double delta) override;
 };

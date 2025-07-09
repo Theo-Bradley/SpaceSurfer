@@ -30,6 +30,11 @@ void PlayerMovement::_bind_methods()
 
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Move Speed"), "set_moveSpeed", "get_moveSpeed");
 
+	ClassDB::bind_method(D_METHOD("get_runSpeed"), &PlayerMovement::get_runSpeed);
+	ClassDB::bind_method(D_METHOD("set_runSpeed", "speed"), &PlayerMovement::set_runSpeed);
+
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Run Speed"), "set_runSpeed", "get_runSpeed");
+
 	ClassDB::bind_method(D_METHOD("get_laneWidth"), &PlayerMovement::get_laneWidth);
 	ClassDB::bind_method(D_METHOD("set_laneWidth", "width"), &PlayerMovement::set_laneWidth);
 
@@ -88,9 +93,9 @@ void PlayerMovement::_physics_process(double delta)
 		change = 0;
 	float dist = Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x);
 	float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
-	float v = moveSpeed * easing * change;
-	float u = playerRigidBody->get_linear_velocity().x;
-	playerRigidBody->apply_central_impulse(Vector3((v - u) * playerRigidBody->get_mass(), 0.f, 0.f));
+	Vector2 v = Vector2(moveSpeed * easing * change, runSpeed);
+	Vector2 u = Vector2(playerRigidBody->get_linear_velocity().x, playerRigidBody->get_linear_velocity().z);
+	playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) *playerRigidBody->get_mass()));
 	if (easing <= movementStop)
 	{
 		moveDirection = None;
@@ -187,4 +192,14 @@ void PlayerMovement::set_fallingForce(float force)
 float PlayerMovement::get_fallingForce()
 {
 	return fallingForce;
+}
+
+void PlayerMovement::set_runSpeed(float speed)
+{
+	runSpeed = speed;
+}
+
+float PlayerMovement::get_runSpeed()
+{
+	return runSpeed;
 }

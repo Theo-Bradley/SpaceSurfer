@@ -10,24 +10,26 @@ size = Vector3(1, 1.15692, 0.73877)
 
 [node name="Container" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -0.00623119)
 shape = SubResource("BoxShape3D_h0n4d")
 
-[node name="Conatiner2" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Conatiner2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
 mesh = ExtResource("1_h0n4d")
+skeleton = NodePath("")
 
-[node name="Conatiner" type="MeshInstance3D" parent="RigidBody3D"]
+[node name="Conatiner" type="MeshInstance3D" parent="."]
 transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
 mesh = ExtResource("1_h0n4d")
+skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="RigidBody3D"]
+[node name="Area3D" type="Area3D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580321, 1.72452)
 shape = SubResource("BoxShape3D_jcpsd")
 debug_color = Color(0.996212, 0, 0.191076, 0.42)
