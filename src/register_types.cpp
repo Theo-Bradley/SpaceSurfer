@@ -11,6 +11,7 @@
 #include "spawn_node.h"
 #include "coin.h"
 #include "coin_manager.h"
+#include "player.h"
 
 using namespace godot;
 
@@ -26,6 +27,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	GDREGISTER_RUNTIME_CLASS(SpawnNode);
 	GDREGISTER_RUNTIME_CLASS(Coin);
 	GDREGISTER_RUNTIME_CLASS(CoinManager);
+	GDREGISTER_RUNTIME_CLASS(Player);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

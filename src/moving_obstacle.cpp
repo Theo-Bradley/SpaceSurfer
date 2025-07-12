@@ -12,7 +12,7 @@ void MovingObstacle::_bind_methods()
 
 void MovingObstacle::_ready()
 {
-	//collider = get_tree()->get_current_scene()->get_node<Node3D>("%Player");
+	player = get_tree()->get_current_scene()->get_node<Player>("%Player");
 }
 
 void MovingObstacle::_physics_process(double delta)
@@ -23,7 +23,10 @@ void MovingObstacle::_physics_process(double delta)
 		{
 			for (int i = 0; i < collider->get_overlapping_bodies().size(); i++)
 			{
-				print_line("hit");
+				if (player != nullptr)
+				{
+					player->Hit();
+				}
 			}
 		}
 	}

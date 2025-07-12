@@ -10,6 +10,9 @@ size = Vector3(1, 1.15692, 0.73877)
 
 [node name="Container" type="Node3D"]
 
+[node name="MovingObstacle" type="MovingObstacle" parent="." node_paths=PackedStringArray("Collider")]
+Collider = NodePath("../Area3D")
+
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

@@ -5,6 +5,7 @@
 #include "godot_cpp/classes/node3d.hpp"
 #include "godot_cpp/classes/area3d.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
+#include "player.h"
 
 using namespace godot;
 
@@ -24,4 +25,6 @@ public:
 	Area3D* collider = nullptr;
 	Area3D* get_collider();
 	void set_collider(Area3D* ref);
+
+	Player* player;
 };

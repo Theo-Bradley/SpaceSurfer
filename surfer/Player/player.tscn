@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://pnt7ablvnmmm"]
+[gd_scene load_steps=4 format=3 uid="uid://pnt7ablvnmmm"]
 
 [ext_resource type="BoxMesh" uid="uid://bu0xv6eb2fyo6" path="res://Player/placeholder.tres" id="1_l8h54"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8h54"]
+friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l8h54"]
 size = Vector3(0.8, 1.6, 0.6)
 
-[node name="Player" type="Node3D"]
+[node name="Player" type="Player"]
 
 [node name="FollowCamera" type="FollowCamera" parent="." node_paths=PackedStringArray("Player Rigid Body")]
 "Player Rigid Body" = NodePath("../RigidBody3D")
 "Camera Offset" = Vector3(0, 1.75, 3.2)
 transform = Transform3D(1, 0, 0, 0, 0.9677, 0.252103, 0, -0.252103, 0.9677, 0, 1.75, 3.2)
+current = true
 fov = 85.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
@@ -19,6 +23,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 80.0
+physics_material_override = SubResource("PhysicsMaterial_l8h54")
 contact_monitor = true
 max_contacts_reported = 16
 
