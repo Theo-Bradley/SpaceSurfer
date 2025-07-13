@@ -39,16 +39,6 @@ void PlayerMovement::_bind_methods()
 	ClassDB::bind_method(D_METHOD("set_laneWidth", "width"), &PlayerMovement::set_laneWidth);
 
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Lane Width"), "set_laneWidth", "get_laneWidth");
-	
-	ClassDB::bind_method(D_METHOD("get_easingStart"), &PlayerMovement::get_easingStart);
-	ClassDB::bind_method(D_METHOD("set_easingStart", "start"), &PlayerMovement::set_easingStart);
-
-	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Easing Start"), "set_easingStart", "get_easingStart");
-
-	ClassDB::bind_method(D_METHOD("get_movementStop"), &PlayerMovement::get_movementStop);
-	ClassDB::bind_method(D_METHOD("set_movementStop", "stop"), &PlayerMovement::set_movementStop);
-
-	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Movement Stop"), "set_movementStop", "get_movementStop");
 }
 
 PlayerMovement::PlayerMovement()
@@ -87,19 +77,23 @@ void PlayerMovement::_process(double delta)
 
 void PlayerMovement::_physics_process(double delta)
 {
+	print_line(playerRigidBody->get_global_position().x);
 	//lane changing code:
 	int change = moveDirection == Left ? -1 : 1;
-	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2))
+	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2)) //dont move if we are on edge lanes
 		change = 0;
 	float dist = Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x);
-	float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
-	Vector2 v = Vector2(moveSpeed * easing * change, runSpeed);
+	//float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
+	Vector2 v = Vector2(moveSpeed * change, runSpeed);
 	Vector2 u = Vector2(playerRigidBody->get_linear_velocity().x, playerRigidBody->get_linear_velocity().z);
 	playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) *playerRigidBody->get_mass()));
-	if (easing <= movementStop)
+	if (Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x) <= Math::absf(playerRigidBody->get_linear_velocity().x * delta * 1.05f)
+		&& moveDirection != None) //if in the correct lane: stop
 	{
+		print_line("stopped");
 		moveDirection = None;
 		currentLane = desiredLane;
+		bounceBack = false;
 	}
 	//jumping code:
 	if (isJumping == true && oldIsJumping == false) //if we just jumped
@@ -115,6 +109,28 @@ void PlayerMovement::_physics_process(double delta)
 		playerRigidBody->apply_central_impulse(Vector3(0.0f, fallingForce * playerRigidBody->get_mass(), 0.0f)); //add the jetpacking force
 	}
 	oldIsJumping = isJumping;
+}
+
+void PlayerMovement::BounceRight()
+{
+	if (bounceBack == false)
+	{
+		currentLane = desiredLane;
+		moveDirection = Right;
+		desiredLane++;
+		bounceBack = true;
+	}
+}
+
+void PlayerMovement::BounceLeft()
+{
+	if (bounceBack == false)
+	{
+		currentLane = desiredLane;
+		moveDirection = Left;
+		desiredLane--;
+		bounceBack = true;
+	}
 }
 
 void PlayerMovement::ChangeDesiredLane(MovementDirection dir)
@@ -164,25 +180,6 @@ void PlayerMovement::set_laneWidth(float width)
 float PlayerMovement::get_laneWidth() const
 {
 	return laneWidth;
-}
-
-void PlayerMovement::set_easingStart(float start)
-{
-	easingStart = start;
-}
-float PlayerMovement::get_easingStart() const
-{
-	return easingStart;
-}
-
-void PlayerMovement::set_movementStop(float stop)
-{
-	movementStop = stop;
-}
-
-float PlayerMovement::get_movementStop() const
-{
-	return movementStop;
 }
 
 void PlayerMovement::set_fallingForce(float force)

@@ -8,10 +8,10 @@
 [node name="Container" parent="." instance=ExtResource("1_30x3x")]
 
 [node name="Container2" parent="." instance=ExtResource("1_30x3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52196, 0, -9.36051)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, -9.361)
 
 [node name="Container3" parent="." instance=ExtResource("1_30x3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9823, 0, 2.84217e-14)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
 
 [node name="SpawnNode" type="SpawnNode" parent="." node_paths=PackedStringArray("Root Node")]
 "Spawn Distance" = 5.0

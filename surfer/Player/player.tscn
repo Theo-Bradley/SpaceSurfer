@@ -36,9 +36,7 @@ shape = SubResource("BoxShape3D_l8h54")
 "Falling Force" = -1.5
 "Move Speed" = 12.5
 "Run Speed" = -5.0
-"Lane Width" = 3.0
-"Easing Start" = 1.0
-"Movement Stop" = 0.5
+"Lane Width" = 1.75
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = ExtResource("1_l8h54")

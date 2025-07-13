@@ -12,6 +12,15 @@ class PlayerMovement : public Node3D {
 protected:
 	static void _bind_methods();
 
+
+	bool isJumping = false; //is the player jumping
+	bool oldIsJumping = false; //was the player jumping on the last frame
+	bool isFalling = false; //is the player jetpacking down
+
+public:
+	PlayerMovement();
+	~PlayerMovement();
+
 	enum MovementDirection
 	{
 		None,
@@ -20,13 +29,10 @@ protected:
 	};
 
 	MovementDirection moveDirection;
-	bool isJumping = false; //is the player jumping
-	bool oldIsJumping = false; //was the player jumping on the last frame
-	bool isFalling = false; //is the player jetpacking down
 
-public:
-	PlayerMovement();
-	~PlayerMovement();
+	bool bounceBack = false;
+	void BounceRight();
+	void BounceLeft();
 
 	RigidBody3D* playerRigidBody = nullptr;
 	void set_playerRigidBody(RigidBody3D* ref);
@@ -43,14 +49,6 @@ public:
 	float laneWidth = 0.0f;
 	void set_laneWidth(float width);
 	float get_laneWidth() const;
-
-	float easingStart = 0.0f;
-	void set_easingStart(float start);
-	float get_easingStart() const;
-
-	float movementStop = 0.0f;
-	void set_movementStop(float stop);
-	float get_movementStop() const;
 
 	int desiredLane = 1;
 	int currentLane = 1;

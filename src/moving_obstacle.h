@@ -6,6 +6,7 @@
 #include "godot_cpp/classes/area3d.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
 #include "player.h"
+#include "player_movement.h"
 
 using namespace godot;
 
@@ -22,9 +23,18 @@ public:
 	void _physics_process(double delta);
 	void _ready();
 
-	Area3D* collider = nullptr;
-	Area3D* get_collider();
-	void set_collider(Area3D* ref);
+	Area3D* frontCollider = nullptr;
+	Area3D* get_frontCollider();
+	void set_frontCollider(Area3D* ref);
+
+	Area3D* leftCollider = nullptr;
+	Area3D* get_leftCollider();
+	void set_leftCollider(Area3D* ref);
+
+	Area3D* rightCollider = nullptr;
+	Area3D* get_rightCollider();
+	void set_rightCollider(Area3D* ref);
 
 	Player* player;
+	PlayerMovement* playerMovement;
 };
