@@ -1,1 +1,28 @@
 Fix easing and add it back in
+
+
+Week 1:
+Moving platforms
+Varied obstacles (like white+red barriers from subsurf)
+Basic game loop:
+	-Start run, run and slowly speed up until stumbled or hit an obstacle, finish run
+Week 2:
+basic polish:
+	-replace all placeholder models
+	-add basic animations
+	-Add basic ingame UI
+Add curved distance shader+planet ground shader
+Week 3:
+Add main menu UI
+Add two other planets
+Add highscore system + basic leaderboard with placeholder scores
+Further polish (week 3/4):
+	-intro camera sequencec
+	-particle effects
+	-backgrounds (with / without atmosphere)
+	-camera shake
+	-ambient particle effects
+Week 4:
+Continue to polish
+Finish UI
+Add unlock system with planets + coins
