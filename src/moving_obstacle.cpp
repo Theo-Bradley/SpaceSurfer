@@ -55,6 +55,7 @@ void MovingObstacle::_physics_process(double delta)
 					{
 						playerMovement->BounceLeft();
 					}
+					player->Stumble();
 				}
 			}
 		}

@@ -14,10 +14,18 @@ protected:
 	static void _bind_methods();
 
 	bool invincible = false;
+	bool stumbling = false;
+	float stumbleTime = 0.f;
+	float stumbleCooldown = 0.f;
 
 public:
 	Player() = default;
 	~Player() override = default;
+	void _process(double delta);
 
 	void Hit();
+	void Stumble();
+
+	float get_stumbleCooldown();
+	void set_stumbleCooldown(float time);
 };

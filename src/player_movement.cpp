@@ -77,7 +77,6 @@ void PlayerMovement::_process(double delta)
 
 void PlayerMovement::_physics_process(double delta)
 {
-	print_line(playerRigidBody->get_global_position().x);
 	//lane changing code:
 	int change = moveDirection == Left ? -1 : 1;
 	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2)) //dont move if we are on edge lanes
@@ -86,11 +85,10 @@ void PlayerMovement::_physics_process(double delta)
 	//float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
 	Vector2 v = Vector2(moveSpeed * change, runSpeed);
 	Vector2 u = Vector2(playerRigidBody->get_linear_velocity().x, playerRigidBody->get_linear_velocity().z);
-	playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) *playerRigidBody->get_mass()));
+	playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) *playerRigidBody->get_mass())); //apply force
 	if (Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x) <= Math::absf(playerRigidBody->get_linear_velocity().x * delta * 1.05f)
 		&& moveDirection != None) //if in the correct lane: stop
 	{
-		print_line("stopped");
 		moveDirection = None;
 		currentLane = desiredLane;
 		bounceBack = false;
