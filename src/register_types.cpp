@@ -7,11 +7,12 @@
 
 #include "player_movement.h"
 #include "follow_camera.h"
-#include "moving_obstacle.h"
+#include "obstacle.h"
 #include "spawn_node.h"
 #include "coin.h"
 #include "coin_manager.h"
 #include "player.h"
+#include "moving_obstacle.h"
 
 using namespace godot;
 
@@ -23,11 +24,12 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 
 	GDREGISTER_RUNTIME_CLASS(PlayerMovement);
 	GDREGISTER_CLASS(FollowCamera);
-	GDREGISTER_RUNTIME_CLASS(MovingObstacle);
+	GDREGISTER_RUNTIME_CLASS(Obstacle);
 	GDREGISTER_RUNTIME_CLASS(SpawnNode);
 	GDREGISTER_RUNTIME_CLASS(Coin);
 	GDREGISTER_RUNTIME_CLASS(CoinManager);
 	GDREGISTER_RUNTIME_CLASS(Player);
+	GDREGISTER_RUNTIME_CLASS(MovingObstacle);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

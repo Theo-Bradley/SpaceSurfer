@@ -34,20 +34,29 @@ SpawnNode::~SpawnNode()
 	memdelete(rng);
 }
 
+void SpawnNode::_ready()
+{
+	player = get_tree()->get_current_scene()->get_node<Player>("%Player");
+}
+
 void SpawnNode::_physics_process(double delta)
 {
-	if (!hasSpawned)
+	if (player != nullptr)
 	{
-		if (get_global_position().z > -spawnDistance) //> - because objects move +z towards camera from -z and we using position not length
+		float playerPos = ((Node3D*)player->get_child(1))->get_global_position().z;
+		if (!hasSpawned)
 		{
-			spawnNewTree();
+			if (get_global_position().z - playerPos > -spawnDistance) //> - because objects move +z towards camera from -z and we using position not length
+			{
+				spawnNewTree();
+			}
 		}
-	}
 
-	if (get_global_position().z > despawnDistance) //we are not getting the actual distance here or above as the player is at 0, 0, 0
-	{
-		if (rootNode != nullptr)
-			rootNode->queue_free();
+		if (get_global_position().z - playerPos > despawnDistance) //we are not getting the actual distance here or above as the player is at 0, 0, 0
+		{
+			if (rootNode != nullptr)
+				rootNode->queue_free();
+		}
 	}
 }
 
@@ -57,6 +66,7 @@ void SpawnNode::spawnNewTree()
 	{
 		int sceneNum = rng->randi_range(1, numScenes);
 		String path = String("res://Scenes/") + String(std::to_string(sceneNum).c_str()) + String(".tscn");
+		print_line(path);
 		Node* scene = ((Ref<PackedScene>)ResourceLoader::get_singleton()->load(path))->instantiate();
 		Node3D* positionNode = memnew(Node3D);
 		get_tree()->get_current_scene()->add_child(positionNode);

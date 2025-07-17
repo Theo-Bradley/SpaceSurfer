@@ -6,35 +6,36 @@
 [node name="1" type="Node3D"]
 
 [node name="Container" parent="." instance=ExtResource("1_30x3x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.51381)
 
 [node name="Container2" parent="." instance=ExtResource("1_30x3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, -9.361)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, -14.8748)
 
 [node name="Container3" parent="." instance=ExtResource("1_30x3x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -5.51381)
 
 [node name="SpawnNode" type="SpawnNode" parent="." node_paths=PackedStringArray("Root Node")]
-"Spawn Distance" = 5.0
+"Spawn Distance" = 15.0
 "Despawn Distance" = 2.0
 "Root Node" = NodePath("..")
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78443e-07, 0, -12.3471)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78443e-07, 0, -17.8609)
 
 [node name="Coin" parent="." instance=ExtResource("2_1rg46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55216, 2.41932, -7.48749)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55216, 2.41932, -13.0013)
 visible = false
 
 [node name="Coin2" parent="." instance=ExtResource("2_1rg46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, 1.18565)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -4.32816)
 visible = false
 
 [node name="Coin3" parent="." instance=ExtResource("2_1rg46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -1.23007)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -6.74388)
 visible = false
 
 [node name="Coin4" parent="." instance=ExtResource("2_1rg46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -2.97839)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -8.4922)
 visible = false
 
 [node name="Coin5" parent="." instance=ExtResource("2_1rg46")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228205, 2.41932, 0.143518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228205, 2.41932, -5.37029)
 visible = false

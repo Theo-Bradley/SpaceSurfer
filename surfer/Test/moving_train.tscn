@@ -1,0 +1,101 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3xpku3akfeug"]
+
+[ext_resource type="ArrayMesh" uid="uid://ehod8c10336s" path="res://Assets/Models/OBJ format/monorail_trainPassenger.obj" id="1_a40r4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h0n4d"]
+size = Vector3(1.25, 1.5, 16.1943)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcpsd"]
+size = Vector3(1, 1.15692, 0.73877)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hct6l"]
+size = Vector3(0.718153, 1, 3.32275)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xl2gf"]
+size = Vector3(0.697144, 1, 3.28363)
+
+[node name="Container" type="Node3D"]
+
+[node name="MovingObstacle" type="MovingObstacle" parent="." node_paths=PackedStringArray("Rigidbody", "Front Collider", "Left Collider", "Right Collider")]
+Rigidbody = NodePath("../RigidBody3D")
+"Move Speed" = -10.0
+"Front Collider" = NodePath("../RigidBody3D/FrontArea")
+"Left Collider" = NodePath("../RigidBody3D/LeftArea")
+"Right Collider" = NodePath("../RigidBody3D/RightArea")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+collision_layer = 2
+axis_lock_linear_x = true
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+continuous_cd = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -6.1034)
+shape = SubResource("BoxShape3D_h0n4d")
+
+[node name="Conatiner2" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner3" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -5.07808)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner4" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -3.07808)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner5" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -9.15348)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner6" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -7.15348)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner7" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -13.2316)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="Conatiner8" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -11.2316)
+mesh = ExtResource("1_a40r4")
+skeleton = NodePath("")
+
+[node name="FrontArea" type="Area3D" parent="RigidBody3D"]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/FrontArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580321, 1.72452)
+shape = SubResource("BoxShape3D_jcpsd")
+debug_color = Color(0.996212, 0, 0.191076, 0.42)
+
+[node name="LeftArea" type="Area3D" parent="RigidBody3D"]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/LeftArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366889, 0.641588, 0)
+shape = SubResource("BoxShape3D_hct6l")
+debug_color = Color(0.996078, 0.843137, 0.192157, 0.419608)
+
+[node name="RightArea" type="Area3D" parent="RigidBody3D"]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/RightArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.378469, 0.641588, 0.0299377)
+shape = SubResource("BoxShape3D_xl2gf")
+debug_color = Color(0.671892, 0.959524, 2.31028e-06, 0.419608)

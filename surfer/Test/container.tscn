@@ -16,12 +16,13 @@ size = Vector3(0.697144, 1, 3.28363)
 
 [node name="Container" type="Node3D"]
 
-[node name="MovingObstacle" type="MovingObstacle" parent="." node_paths=PackedStringArray("Front Collider", "Left Collider", "Right Collider")]
+[node name="Obstacle" type="Obstacle" parent="." node_paths=PackedStringArray("Front Collider", "Left Collider", "Right Collider")]
 "Front Collider" = NodePath("../FrontArea")
 "Left Collider" = NodePath("../LeftArea")
 "Right Collider" = NodePath("../RightArea")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -0.00623119)
@@ -38,7 +39,7 @@ mesh = ExtResource("1_h0n4d")
 skeleton = NodePath("")
 
 [node name="FrontArea" type="Area3D" parent="."]
-collision_mask = 2
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FrontArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.580321, 1.72452)
@@ -46,6 +47,7 @@ shape = SubResource("BoxShape3D_jcpsd")
 debug_color = Color(0.996212, 0, 0.191076, 0.42)
 
 [node name="LeftArea" type="Area3D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366889, 0.641588, 0)
@@ -53,6 +55,7 @@ shape = SubResource("BoxShape3D_hct6l")
 debug_color = Color(0.996078, 0.843137, 0.192157, 0.419608)
 
 [node name="RightArea" type="Area3D" parent="."]
+collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RightArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.378469, 0.641588, 0.0299377)

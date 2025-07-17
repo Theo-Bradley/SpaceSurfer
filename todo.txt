@@ -2,7 +2,7 @@ Fix easing and add it back in
 
 
 Week 1:
-Moving platforms
+Moving platforms - DONE
 Varied obstacles (like white+red barriers from subsurf)
 Basic game loop:
 	-Start run, run and slowly speed up until stumbled or hit an obstacle, finish run

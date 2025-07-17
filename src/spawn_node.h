@@ -8,6 +8,7 @@
 #include "godot_cpp/classes/random_number_generator.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
+#include "player.h"
 
 using namespace godot;
 
@@ -25,6 +26,7 @@ public:
 	SpawnNode();
 	~SpawnNode();
 
+	void _ready();
 	void _physics_process(double delta);
 
 	void spawnNewTree();
@@ -42,4 +44,6 @@ public:
 	Node* rootNode;
 	Node* get_rootNode();
 	void set_rootNode(Node* node);
+
+	Player* player;
 };

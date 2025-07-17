@@ -19,7 +19,7 @@ current = true
 fov = 85.0
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 3
+collision_layer = 7
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

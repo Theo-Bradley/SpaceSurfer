@@ -17,9 +17,11 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
 
 [node name="Floor" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 1, 2.0022, -1.05375, 0)
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 10, 2.0022, -1.05375, -66.2481)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.25)

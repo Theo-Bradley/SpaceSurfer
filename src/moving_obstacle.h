@@ -2,16 +2,15 @@
 
 #include "godot_cpp/classes/ref_counted.hpp"
 #include "godot_cpp/classes/wrapped.hpp"
+#include "godot_cpp/variant/variant.hpp"
 #include "godot_cpp/classes/node3d.hpp"
-#include "godot_cpp/classes/area3d.hpp"
-#include "godot_cpp/classes/scene_tree.hpp"
-#include "player.h"
-#include "player_movement.h"
+#include "godot_cpp/classes/rigid_body3d.hpp"
+#include "obstacle.h"
 
 using namespace godot;
 
-class MovingObstacle : public Node3D {
-	GDCLASS(MovingObstacle, Node3D)
+class MovingObstacle : public Obstacle {
+	GDCLASS(MovingObstacle, Obstacle)
 
 protected:
 	static void _bind_methods();
@@ -20,21 +19,14 @@ public:
 	MovingObstacle() = default;
 	~MovingObstacle() override = default;
 
-	void _physics_process(double delta);
+	void _physics_process(double delta) override;
 	void _ready();
 
-	Area3D* frontCollider = nullptr;
-	Area3D* get_frontCollider();
-	void set_frontCollider(Area3D* ref);
+	RigidBody3D* rigidbody = nullptr;
+	RigidBody3D* get_rigidbody();
+	void set_rigidbody(RigidBody3D* body);
 
-	Area3D* leftCollider = nullptr;
-	Area3D* get_leftCollider();
-	void set_leftCollider(Area3D* ref);
-
-	Area3D* rightCollider = nullptr;
-	Area3D* get_rightCollider();
-	void set_rightCollider(Area3D* ref);
-
-	Player* player;
-	PlayerMovement* playerMovement;
+	float moveSpeed = 0.0f;
+	float get_moveSpeed();
+	void set_moveSpeed(float speed);
 };
