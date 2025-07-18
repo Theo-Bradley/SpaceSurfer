@@ -77,35 +77,46 @@ void PlayerMovement::_process(double delta)
 
 void PlayerMovement::_physics_process(double delta)
 {
-	//lane changing code:
-	int change = moveDirection == Left ? -1 : 1;
-	if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2)) //dont move if we are on edge lanes
-		change = 0;
-	float dist = Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x);
-	//float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
-	Vector2 v = Vector2(moveSpeed * change, runSpeed);
-	Vector2 u = Vector2(playerRigidBody->get_linear_velocity().x, playerRigidBody->get_linear_velocity().z);
-	playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) *playerRigidBody->get_mass())); //apply force
-	if (Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x) <= Math::absf(playerRigidBody->get_linear_velocity().x * delta * 1.05f)
-		&& moveDirection != None) //if in the correct lane: stop
+	if (shouldMove)
 	{
-		moveDirection = None;
-		currentLane = desiredLane;
-		bounceBack = false;
+		//lane changing code:
+		int change = moveDirection == Left ? -1 : 1;
+		if (moveDirection == None || (moveDirection == Left && currentLane == 0) || (moveDirection == Right && currentLane == 2)) //dont move if we are on edge lanes
+			change = 0;
+		float dist = Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x);
+		//float easing = fminf(powf(dist * powf(easingStart, -1.f), 0.5f), 1.0f); //y = min((x*a)^(1/2)) where x is distance between player and lane and 1/a is the start of easing
+		Vector2 v = Vector2(moveSpeed * change, runSpeed * speedMultiplier);
+		Vector2 u = Vector2(playerRigidBody->get_linear_velocity().x, playerRigidBody->get_linear_velocity().z);
+		playerRigidBody->apply_central_impulse(Vector3((v.x - u.x) * playerRigidBody->get_mass(), 0.f, (v.y - u.y) * playerRigidBody->get_mass())); //apply force
+		if (Math::absf(desiredLane * laneWidth - playerRigidBody->get_global_position().x) <= Math::absf(playerRigidBody->get_linear_velocity().x * delta * 1.05f)
+			&& moveDirection != None) //if in the correct lane: stop
+		{
+			moveDirection = None;
+			currentLane = desiredLane;
+			bounceBack = false;
+		}
+		//jumping code:
+		if (isJumping == true && oldIsJumping == false) //if we just jumped
+		{
+			playerRigidBody->apply_central_impulse(Vector3(0.f, jumpForce * playerRigidBody->get_mass(), 0.f));
+		}
+		if (oldIsJumping == true && isJumping == true && playerRigidBody->get_contact_count() > 0) //detect if we are touching something
+		{//if so, assume we are grounded
+			isJumping = false;
+		}
+		if (isJumping == true && isFalling == true)
+		{
+			playerRigidBody->apply_central_impulse(Vector3(0.0f, fallingForce * playerRigidBody->get_mass(), 0.0f)); //add the jetpacking force
+		}
 	}
-	//jumping code:
-	if (isJumping == true && oldIsJumping == false) //if we just jumped
+
+	else
 	{
-		playerRigidBody->apply_central_impulse(Vector3(0.f, jumpForce * playerRigidBody->get_mass(), 0.f));
+		playerRigidBody->apply_central_impulse(Vector3((0.f - playerRigidBody->get_linear_velocity().x) * playerRigidBody->get_mass(),
+			0.f,
+			(0.f - playerRigidBody->get_linear_velocity().z) * playerRigidBody->get_mass())); //zero player velocity
 	}
-	if (oldIsJumping == true && isJumping == true && playerRigidBody->get_contact_count() > 0) //detect if we are touching something
-	{//if so, assume we are grounded
-		isJumping = false;
-	}
-	if (isJumping == true && isFalling == true)
-	{
-		playerRigidBody->apply_central_impulse(Vector3(0.0f, fallingForce * playerRigidBody->get_mass(), 0.0f)); //add the jetpacking force
-	}
+
 	oldIsJumping = isJumping;
 }
 

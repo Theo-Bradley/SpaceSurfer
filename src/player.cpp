@@ -10,27 +10,37 @@ void Player::_bind_methods()
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Stumble Cooldown"), "set_stumbleCooldown", "get_stumbleCooldown");
 }
 
+void Player::_ready()
+{
+	playerMovement = (PlayerMovement*)get_child(1)->get_child(1);
+}
+
 void Player::Hit()
 {
 	if (!invincible)
 	{
-		print_line("Hit");
+		Die();
 	}
 }
 
-void Player::Stumble()
+void Player::Stumble(String path)
 {
 	if (!invincible)
 	{
-		if (stumbleTime > 0.f) //if already stumbling
-		{
-			Hit(); //die
-		}
-		else
+		if (path != lastPath) //if this wasn't the same collider we hit last time
 		{
 			stumbling = true;
+			justStumbled = true;
 		}
+		lastPath = path;
 	}
+}
+
+void Player::Die()
+{
+	((CollisionShape3D*)get_child(1)->get_child(0))->set_disabled(true);
+	((RigidBody3D*)get_child(1))->set_gravity_scale(0.0f);
+	((PlayerMovement*)get_child(1)->get_child(1))->shouldMove = false;
 }
 
 void Player::_process(double delta)
@@ -38,12 +48,19 @@ void Player::_process(double delta)
 	if (stumbling)
 	{
 		stumbleTime += delta;
+		if (stumbleTime >= stumbleCooldown)
+		{
+			stumbling = false;
+			stumbleTime = 0.0f;
+		}
+		if (justStumbled && wasStumbled)
+		{
+			Die();
+		}
 	}
-	if (stumbleTime >= stumbleCooldown)
-	{
-		stumbling = false;
-		stumbleTime = 0.f;
-	}
+
+	wasStumbled = stumbling;
+	justStumbled = false;
 }
 
 //getters and setters

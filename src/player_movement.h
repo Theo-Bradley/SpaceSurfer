@@ -62,6 +62,9 @@ public:
 	void set_runSpeed(float speed);
 	float get_runSpeed();
 
+	float speedMultiplier = 1.0f;
+
+	bool shouldMove = true;
 
 	void _process(double delta) override;
 	void _physics_process(double delta) override;

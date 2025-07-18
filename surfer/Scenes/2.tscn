@@ -13,7 +13,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, -45.3348)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -3.24308)
 
 [node name="SpawnNode" type="SpawnNode" parent="." node_paths=PackedStringArray("Root Node")]
-"Spawn Distance" = -20.0
+"Spawn Distance" = 20.0
 "Despawn Distance" = 2.0
 "Root Node" = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78443e-07, 0, -21.8002)

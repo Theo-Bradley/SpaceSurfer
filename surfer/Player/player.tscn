@@ -9,7 +9,7 @@ friction = 0.0
 size = Vector3(0.8, 1.6, 0.6)
 
 [node name="Player" type="Player"]
-"Stumble Cooldown" = 2000.0
+"Stumble Cooldown" = 2.0
 
 [node name="FollowCamera" type="FollowCamera" parent="." node_paths=PackedStringArray("Player Rigid Body")]
 "Player Rigid Body" = NodePath("../RigidBody3D")

@@ -55,7 +55,7 @@ void Obstacle::_physics_process(double delta)
 					{
 						playerMovement->BounceLeft();
 					}
-					player->Stumble();
+					player->Stumble(get_path());
 				}
 			}
 		}
@@ -73,6 +73,7 @@ void Obstacle::_physics_process(double delta)
 					{
 						playerMovement->BounceRight();
 					}
+					player->Stumble(get_path());
 				}
 			}
 		}

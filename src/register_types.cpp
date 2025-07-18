@@ -13,6 +13,7 @@
 #include "coin_manager.h"
 #include "player.h"
 #include "moving_obstacle.h"
+#include "game_manager.h"
 
 using namespace godot;
 
@@ -30,6 +31,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	GDREGISTER_RUNTIME_CLASS(CoinManager);
 	GDREGISTER_RUNTIME_CLASS(Player);
 	GDREGISTER_RUNTIME_CLASS(MovingObstacle);
+	GDREGISTER_RUNTIME_CLASS(GameManager);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
