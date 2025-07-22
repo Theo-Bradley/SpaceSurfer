@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv5jmekf1xc25"]
+[gd_scene load_steps=6 format=3 uid="uid://dv5jmekf1xc25"]
 
-[ext_resource type="ArrayMesh" uid="uid://ehod8c10336s" path="res://Assets/Models/OBJ format/monorail_trainPassenger.obj" id="1_h0n4d"]
-[ext_resource type="Material" uid="uid://dgvygcbir5mjo" path="res://Assets/Shaders and Materials/default.tres" id="1_jcpsd"]
+[ext_resource type="PackedScene" uid="uid://cd65hbn413b4w" path="res://Assets/Models/glTF/monorail_trainPassenger.glb" id="3_hct6l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h0n4d"]
 size = Vector3(1.25, 1.5, 4)
@@ -28,17 +27,6 @@ size = Vector3(0.172791, 1.00093, 3.28363)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -0.00623119)
 shape = SubResource("BoxShape3D_h0n4d")
 
-[node name="Conatiner2" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
-material_override = ExtResource("1_jcpsd")
-mesh = ExtResource("1_h0n4d")
-skeleton = NodePath("")
-
-[node name="Conatiner" type="MeshInstance3D" parent="."]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
-mesh = ExtResource("1_h0n4d")
-skeleton = NodePath("")
-
 [node name="FrontArea" type="Area3D" parent="."]
 collision_mask = 4
 
@@ -62,3 +50,9 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.640646, 0.642053, 0.0299377)
 shape = SubResource("BoxShape3D_xl2gf")
 debug_color = Color(0.671892, 0.959524, 2.31028e-06, 0.419608)
+
+[node name="monorail_trainPassenger3" parent="." instance=ExtResource("3_hct6l")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
+
+[node name="monorail_trainPassenger2" parent="." instance=ExtResource("3_hct6l")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)

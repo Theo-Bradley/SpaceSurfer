@@ -2,6 +2,7 @@
 extends EditorScenePostImport
 
 var scenePath
+var first
 
 # Called right after the scene is imported and gets the root node.
 func _post_import(scene):
@@ -14,6 +15,9 @@ func _post_import(scene):
 # Recursive function that is called on every node
 func iterate(node):
 	if node != null:
+		node = node as Node3D
+		if node.position == Vector3(2.0, 0.0, 1.5): #fix an offset with my asset pack
+			node.position = Vector3(0.0, 0.0, 0.0) #if node is offset to the default asset pack offset then zero position
 		if node is MeshInstance3D:
 			var myShader = load("res://Assets/Shaders and Materials/glTF_import.gdshader") as Shader #load the fixed shader
 			var mesh = node.mesh

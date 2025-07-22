@@ -11,8 +11,8 @@ basic polish:
 	-replace all placeholder models
 	-add basic animations
 		-coin spinning
-	-Add basic ingame UI
-Add curved distance shader+planet ground shader
+	-Add basic ingame UI -NOT FUNCTIONAL
+Add curved distance shader+planet ground shader -DONE distance shader, need to do planet/ground shader
 Week 3:
 Add main menu UI
 Add two other planets
