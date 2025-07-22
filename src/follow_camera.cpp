@@ -24,6 +24,7 @@ void FollowCamera::_process(double delta)
 	{
 		Vector3 pos = playerRigidBody->get_global_position();
 		set_global_position(pos + cameraOffset);
+		RenderingServer::get_singleton()->global_shader_parameter_set("camPos", get_global_position()); //update camera position for all shaders
 	}
 }
 

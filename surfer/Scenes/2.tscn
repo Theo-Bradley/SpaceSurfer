@@ -18,22 +18,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0, -3.24308)
 "Root Node" = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.78443e-07, 0, -21.8002)
 
-[node name="Coin" parent="." instance=ExtResource("2_jtigg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55216, 2.41932, -9.64137)
-visible = false
-
 [node name="Coin2" parent="." instance=ExtResource("2_jtigg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -0.968227)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.54152, 2.12534, -2.08544)
 
 [node name="Coin3" parent="." instance=ExtResource("2_jtigg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -3.38395)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.54152, 2.12534, -3.3329)
 
 [node name="Coin4" parent="." instance=ExtResource("2_jtigg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.04951, 2.41932, -5.13227)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.54152, 2.12534, -4.76389)
 
 [node name="Coin5" parent="." instance=ExtResource("2_jtigg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228205, 2.41932, -2.01036)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -4.75928)
+
+[node name="Coin6" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -6.00675)
+
+[node name="Coin7" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -7.43773)
+
+[node name="Coin8" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -8.75549)
+
+[node name="Coin9" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -10.003)
+
+[node name="Coin10" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -11.4339)
+
+[node name="Coin11" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -12.6955)
+
+[node name="Coin12" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -13.943)
+
+[node name="Coin13" parent="." instance=ExtResource("2_jtigg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0780556, 0.692621, -15.374)

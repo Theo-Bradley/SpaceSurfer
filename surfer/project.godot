@@ -36,3 +36,18 @@ Right={
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[shader_globals]
+
+zFalloff={
+"type": "float",
+"value": 50.0
+}
+camPos={
+"type": "vec3",
+"value": Vector3(0, 0, 0)
+}
+zFalloffStrength={
+"type": "float",
+"value": 5.0
+}

@@ -10,6 +10,7 @@ Week 2:
 basic polish:
 	-replace all placeholder models
 	-add basic animations
+		-coin spinning
 	-Add basic ingame UI
 Add curved distance shader+planet ground shader
 Week 3:

@@ -6,7 +6,7 @@
 friction = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l8h54"]
-size = Vector3(0.8, 1.6, 0.6)
+size = Vector3(0.528, 1.056, 0.396)
 
 [node name="Player" type="Player"]
 "Stumble Cooldown" = 2.0
@@ -40,6 +40,7 @@ shape = SubResource("BoxShape3D_l8h54")
 "Lane Width" = 1.75
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0, 0, 0)
 mesh = ExtResource("1_l8h54")
 skeleton = NodePath("../../..")
 

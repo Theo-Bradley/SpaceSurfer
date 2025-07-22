@@ -1,17 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=7 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
+[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/ground_material.tres" id="3_1ihti"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
+[ext_resource type="ArrayMesh" uid="uid://dw2vwnnk5mkop" path="res://Test/conatiner.obj" id="6_hxhys"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lxp54"]
-size = Vector2(15, 50)
+material = ExtResource("3_1ihti")
+size = Vector2(50, 100)
+subdivide_width = 4
+subdivide_depth = 8
 
 [node name="Test" type="Node3D"]
 
 [node name="GameManager" type="GameManager" parent="."]
 "Double Time" = 60.0
 "Maximum Speed multipler" = 3.0
+"Score Multiplier" = 20
 
 [node name="CoinManager" type="CoinManager" parent="."]
 unique_name_in_owner = true
@@ -21,7 +27,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
 
 [node name="Floor" type="Node3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 10, 2.0022, -1.05375, -66.2481)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.054, 6.34203)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 collision_layer = 3
@@ -32,8 +38,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.25)
 shape = ExtResource("2_lxp54")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.1802)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.5638)
 mesh = SubResource("PlaneMesh_lxp54")
+
+[node name="Conatiner" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.34904, 1.054, -56.787)
+mesh = ExtResource("6_hxhys")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.96977, -0.122449, -0.211075, 0.244021, 0.486628, 0.838837, 0, -0.864985, 0.501798, -3.84163, 0.122892, 0)

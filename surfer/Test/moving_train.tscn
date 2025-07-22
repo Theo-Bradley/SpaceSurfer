@@ -24,7 +24,6 @@ Rigidbody = NodePath("../RigidBody3D")
 "Right Collider" = NodePath("../RigidBody3D/RightArea")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
-collision_layer = 2
 axis_lock_linear_x = true
 axis_lock_linear_y = true
 axis_lock_angular_x = true

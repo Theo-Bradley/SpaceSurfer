@@ -2,6 +2,7 @@
 
 #include "godot_cpp/classes/camera3d.hpp"
 #include "godot_cpp/classes/rigid_body3d.hpp"
+#include "godot_cpp/classes/rendering_server.hpp"
 
 using namespace godot;
 

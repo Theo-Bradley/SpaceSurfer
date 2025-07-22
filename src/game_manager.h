@@ -29,8 +29,10 @@ public:
 	void FinishGame();
 
 	float elapsedTime = 0.f;
+	int score = 0;
 
 	PlayerMovement* playerMovement;
+	RigidBody3D* playerRigidBody;
 
 	float doubleTime = 0.f;
 	float get_doubleTime();
@@ -39,4 +41,8 @@ public:
 	float maxSpeedMultiplier = 0.0f;
 	float get_maxSpeedMultiplier();
 	void set_maxSpeedMultiplier(float max);
+
+	int scoreMultiplier = 0;
+	int get_scoreMultiplier();
+	void set_score_multiplier(int mult);
 };
