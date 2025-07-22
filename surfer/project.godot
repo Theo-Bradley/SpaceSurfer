@@ -15,6 +15,12 @@ run/main_scene="uid://bgc4kb5os34mm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[importer_defaults]
+
+scene={
+&"import_script/path": "uid://c7mwagvlca5es"
+}
+
 [input]
 
 Jump={

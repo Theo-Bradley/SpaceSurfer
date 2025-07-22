@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=9 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
 [ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/ground_material.tres" id="3_1ihti"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
 [ext_resource type="ArrayMesh" uid="uid://dw2vwnnk5mkop" path="res://Test/conatiner.obj" id="6_hxhys"]
+[ext_resource type="PackedScene" uid="uid://c51qgp2wapay5" path="res://Assets/Models/glTF/monorail_trainPassenger - Copy.gltf" id="6_wbqg2"]
+[ext_resource type="PackedScene" uid="uid://cadbx5matifww" path="res://Assets/Models/glTF/rock.glb" id="7_hxhys"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_lxp54"]
 material = ExtResource("3_1ihti")
@@ -50,3 +52,9 @@ transform = Transform3D(0.96977, -0.122449, -0.211075, 0.244021, 0.486628, 0.838
 
 [node name="1" parent="." instance=ExtResource("3_jda1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.81983)
+
+[node name="monorail_trainPassenger - Copy" parent="." instance=ExtResource("6_wbqg2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.986671, -1.004, -25.7703)
+
+[node name="rock" parent="." instance=ExtResource("7_hxhys")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42372, -0.606543, -25.3007)

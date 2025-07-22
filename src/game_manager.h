@@ -6,6 +6,9 @@
 #include "godot_cpp/classes/node3d.hpp"
 #include "godot_cpp/classes/node.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
+#include "godot_cpp/classes/resource_loader.hpp"
+#include "godot_cpp/classes/resource_saver.hpp"
+#include "godot_cpp/classes/json.hpp"
 #include "player_movement.h"
 #include "player.h"
 
@@ -27,6 +30,7 @@ public:
 	void StartGame();
 	void PauseGame();
 	void FinishGame();
+	bool HighScore(int score, int highScore);
 
 	float elapsedTime = 0.f;
 	int score = 0;

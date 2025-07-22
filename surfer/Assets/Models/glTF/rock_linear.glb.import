@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bswo2vq6rs6fq"
-path="res://.godot/imported/monorail_trainPassenger.gltf-5f1a461f69a59b48aa59b8863ed6992a.scn"
+uid="uid://b8rf5n0sbklwu"
+path="res://.godot/imported/rock_linear.glb-8bc7cf3d13ef83081affd053a206e329.scn"
 
 [deps]
 
-source_file="res://Assets/Models/glTF/monorail_trainPassenger.gltf"
-dest_files=["res://.godot/imported/monorail_trainPassenger.gltf-5f1a461f69a59b48aa59b8863ed6992a.scn"]
+source_file="res://Assets/Models/glTF/rock_linear.glb"
+dest_files=["res://.godot/imported/rock_linear.glb-8bc7cf3d13ef83081affd053a206e329.scn"]
 
 [params]
 

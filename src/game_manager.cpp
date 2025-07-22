@@ -32,6 +32,24 @@ void GameManager::PauseGame()
 void GameManager::FinishGame()
 {
 	//save score
+	Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
+	if (res != nullptr)
+	{
+		Ref<JSON> resJSON = (Ref<JSON>)res;
+		int highScore = (int)resJSON->get_data();
+		if (HighScore(score, highScore))
+		{
+			resJSON->set_data(JSON::stringify(highScore));
+			ResourceSaver::get_singleton()->save(resJSON, "res://highscore.json");
+		}
+	}
+}
+
+bool GameManager::HighScore(int score, int highScore)
+{
+	if (score > highScore)
+		return true;
+	//add some other high score stuff here such as particle effects, leaderboard updating etc
 }
 
 void GameManager::_ready()
