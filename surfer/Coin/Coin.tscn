@@ -1,9 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://lsx6j6sfhjnb"]
+[gd_scene load_steps=6 format=3 uid="uid://lsx6j6sfhjnb"]
 
 [ext_resource type="PackedScene" uid="uid://bf6m67hqobmk6" path="res://Assets/Models/rock.blend" id="1_k1tds"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k1tds"]
 radius = 0.35538
+
+[sub_resource type="Animation" id="Animation_k1tds"]
+resource_name = "idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.00833344, 1, -0.0157117, 0.209152, -0.00366116, 2, 1, -0.016, -0.209, -0.004)
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 3.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 3.12414, 0), Vector3(0, 6.26573, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tr2r7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xttat"]
+_data = {
+&"RESET": SubResource("Animation_tr2r7"),
+&"idle": SubResource("Animation_k1tds")
+}
 
 [node name="Coin" type="Node3D"]
 
@@ -16,4 +61,12 @@ radius = 0.35538
 shape = SubResource("SphereShape3D_k1tds")
 
 [node name="rock" parent="." instance=ExtResource("1_k1tds")]
-transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -0.0157117, 0, -0.00366116)
+transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, -0.015971, -0.166898, -0.00396588)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="rock"]
+libraries = {
+&"": SubResource("AnimationLibrary_xttat")
+}
+autoplay = "idle"
+speed_scale = 1.578
+next/idle = &"idle"

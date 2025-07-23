@@ -1,5 +1,6 @@
 Fix easing and add it back in
 remove player weightless ness ondeath
+add emission to post import script
 
 Week 1:
 Moving platforms - DONE
@@ -10,7 +11,7 @@ Week 2:
 basic polish:
 	-replace all placeholder models
 	-add basic animations
-		-coin spinning
+		-coin spinning -DONE
 	-Add basic ingame UI -DONE
 Add curved distance shader+planet ground shader -DONE distance shader, need to do planet/ground shader
 Week 3:
