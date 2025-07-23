@@ -13,24 +13,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6dd3c")
 
-[node name="Control" type="Control" parent="."]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Score" type="Label" parent="Control"]
+[node name="Score" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 28.792
 anchor_right = 28.792
-offset_left = -199.68
+offset_left = -32216.4
 offset_top = -1.0
-offset_right = -1.68005
+offset_right = -32018.4
 offset_bottom = 33.0
 text = "0"
 horizontal_alignment = 2
 
-[node name="HighScore" type="Label" parent="Control/Score"]
+[node name="HighScore" type="Label" parent="Score"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 28.792
@@ -43,7 +38,7 @@ theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 2
 
-[node name="Pause" type="Button" parent="Control"]
+[node name="Pause" type="Button" parent="."]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 7.0
@@ -51,7 +46,7 @@ offset_right = 50.0
 offset_bottom = 47.0
 expand_icon = true
 
-[node name="TextureRect" type="TextureRect" parent="Control/Pause"]
+[node name="TextureRect" type="TextureRect" parent="Pause"]
 material = ExtResource("2_q0uhn")
 layout_mode = 1
 anchors_preset = -1
@@ -64,16 +59,18 @@ grow_vertical = 2
 texture = ExtResource("2_dhe1o")
 expand_mode = 3
 
-[node name="HighScoreProgress" type="ProgressBar" parent="Control"]
+[node name="HighScoreProgress" type="ProgressBar" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 28.785
 anchor_top = 8.662
 anchor_right = 28.785
 anchor_bottom = 8.662
-offset_left = -32.4
-offset_top = -249.48
-offset_right = -15.4
-offset_bottom = 249.52
+offset_left = -32041.3
+offset_top = -5515.98
+offset_right = -32024.3
+offset_bottom = -5016.98
+max_value = 1.0
+step = 0.001
 fill_mode = 3
 show_percentage = false

@@ -9,8 +9,13 @@
 #include "godot_cpp/classes/resource_loader.hpp"
 #include "godot_cpp/classes/resource_saver.hpp"
 #include "godot_cpp/classes/json.hpp"
+#include "godot_cpp/classes/label.hpp"
+#include "godot_cpp/classes/progress_bar.hpp"
+#include "godot_cpp/classes/control.hpp"
+#include "godot_cpp/classes/button.hpp"
 #include "player_movement.h"
 #include "player.h"
+#include "utils.h"
 
 using namespace godot;
 
@@ -26,6 +31,7 @@ public:
 
 	void _ready();
 	void _physics_process(double delta);
+	void _process(double delta);
 
 	void StartGame();
 	void PauseGame();
@@ -34,6 +40,8 @@ public:
 
 	float elapsedTime = 0.f;
 	int score = 0;
+	int highscore = 1;
+	bool paused = false;
 
 	PlayerMovement* playerMovement;
 	RigidBody3D* playerRigidBody;
@@ -49,4 +57,14 @@ public:
 	int scoreMultiplier = 0;
 	int get_scoreMultiplier();
 	void set_score_multiplier(int mult);
+
+	//UI Elements
+	Control* UINode = nullptr;
+	Control* get_UI();
+	void set_UI(Control* ref);
+
+	Label* scoreLabel = nullptr;
+	Label* highscoreLabel = nullptr;
+	Button* pauseButton = nullptr;
+	ProgressBar* progBar = nullptr;
 };

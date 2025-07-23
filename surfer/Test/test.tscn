@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=8 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
+[ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_wbqg2"]
 [ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/ground_material.tres" id="3_1ihti"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
 [ext_resource type="PackedScene" uid="uid://dlvqlhbxvopro" path="res://Assets/Models/glTF/rock_linear.glb" id="6_6kqi2"]
@@ -14,10 +15,12 @@ subdivide_depth = 8
 
 [node name="Test" type="Node3D"]
 
-[node name="GameManager" type="GameManager" parent="."]
+[node name="GameManager" type="GameManager" parent="." node_paths=PackedStringArray("UI node")]
 "Double Time" = 60.0
 "Maximum Speed multipler" = 3.0
 "Score Multiplier" = 20
+"UI node" = NodePath("../UI")
+process_mode = 3
 
 [node name="CoinManager" type="CoinManager" parent="."]
 unique_name_in_owner = true
@@ -25,6 +28,9 @@ unique_name_in_owner = true
 [node name="Player" parent="." instance=ExtResource("1_yfa23")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+
+[node name="UI" parent="." instance=ExtResource("2_wbqg2")]
+process_mode = 3
 
 [node name="Floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.054, 6.34203)

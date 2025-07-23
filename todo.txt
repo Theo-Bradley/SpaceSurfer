@@ -1,18 +1,18 @@
 Fix easing and add it back in
 remove OBJ folder
-
+remove player weightless ness ondeath
 
 Week 1:
 Moving platforms - DONE
 Varied obstacles (like white+red barriers from subsurf)
 Basic game loop:
-	-Start run, run and slowly speed up until stumbled or hit an obstacle, finish run - BASICALLY DONE (still need to finish run)
+	-Start run, run and slowly speed up until stumbled or hit an obstacle, finish run -DONE
 Week 2:
 basic polish:
 	-replace all placeholder models
 	-add basic animations
 		-coin spinning
-	-Add basic ingame UI -NOT FUNCTIONAL
+	-Add basic ingame UI -DONE
 Add curved distance shader+planet ground shader -DONE distance shader, need to do planet/ground shader
 Week 3:
 Add main menu UI
