@@ -1,5 +1,4 @@
 Fix easing and add it back in
-remove OBJ folder
 remove player weightless ness ondeath
 
 Week 1:
