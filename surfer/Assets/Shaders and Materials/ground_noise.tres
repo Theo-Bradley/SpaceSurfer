@@ -1,0 +1,9 @@
+[gd_resource type="NoiseTexture2D" load_steps=2 format=3 uid="uid://dm7unmmhuixwc"]
+
+[ext_resource type="FastNoiseLite" uid="uid://dnneamohilivr" path="res://Assets/Shaders and Materials/ground_noise_noise.tres" id="1_xnjru"]
+
+[resource]
+width = 2048
+height = 2048
+seamless = true
+noise = ExtResource("1_xnjru")

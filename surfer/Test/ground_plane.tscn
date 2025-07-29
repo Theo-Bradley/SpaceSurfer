@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk0v1j08y4rre"]
+
+[ext_resource type="PackedScene" uid="uid://uwkb61yvkuyu" path="res://Assets/Models/glTF/ground_plane_linear.glb" id="1_3waey"]
+[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/earth_material.tres" id="2_kw1mb"]
+
+[node name="ground_plane_linear" instance=ExtResource("1_3waey")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_kw1mb")

@@ -15,12 +15,6 @@ run/main_scene="uid://bgc4kb5os34mm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
-[importer_defaults]
-
-scene={
-&"import_script/path": "uid://c7mwagvlca5es"
-}
-
 [input]
 
 Jump={
@@ -47,7 +41,7 @@ Right={
 
 zFalloff={
 "type": "float",
-"value": 50.0
+"value": 100.0
 }
 camPos={
 "type": "vec3",
@@ -55,5 +49,5 @@ camPos={
 }
 zFalloffStrength={
 "type": "float",
-"value": 5.0
+"value": 1.5
 }

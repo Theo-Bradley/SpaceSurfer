@@ -1,17 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=7 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
 [ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_wbqg2"]
-[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/ground_material.tres" id="3_1ihti"]
+[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/earth_material.tres" id="3_1ihti"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
-[ext_resource type="PackedScene" uid="uid://dlvqlhbxvopro" path="res://Assets/Models/glTF/rock_linear.glb" id="6_6kqi2"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_lxp54"]
-material = ExtResource("3_1ihti")
-size = Vector2(50, 100)
-subdivide_width = 4
-subdivide_depth = 8
+[ext_resource type="ArrayMesh" uid="uid://bk1yi0k80errn" path="res://Assets/Models/ground_plane.obj" id="7_hxhys"]
 
 [node name="Test" type="Node3D"]
 
@@ -27,25 +21,24 @@ unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("1_yfa23")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
 
 [node name="UI" parent="." instance=ExtResource("2_wbqg2")]
 process_mode = 3
 
 [node name="Floor" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.054, 6.34203)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74227, -1.054, -2.25178)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+[node name="FollowFloor" type="FollowFloor" parent="Floor"]
+"Y Offset" = -1.21
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/FollowFloor"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -17.25)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FollowFloor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = ExtResource("2_lxp54")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42.5638)
-mesh = SubResource("PlaneMesh_lxp54")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.96977, -0.122449, -0.211075, 0.244021, 0.486628, 0.838837, 0, -0.864985, 0.501798, -3.84163, 0.122892, 0)
@@ -53,5 +46,13 @@ transform = Transform3D(0.96977, -0.122449, -0.211075, 0.244021, 0.486628, 0.838
 [node name="1" parent="." instance=ExtResource("3_jda1s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.81983)
 
-[node name="rock_linear" parent="." instance=ExtResource("6_6kqi2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12235, -0.606543, -27.2787)
+[node name="GroundPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96967e-05, -90.795)
+material_override = ExtResource("3_1ihti")
+mesh = ExtResource("7_hxhys")
+surface_material_override/0 = ExtResource("3_1ihti")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.911065, 0.152473, 0.38303, -0.412262, 0.336952, 0.846465, 0, -0.929094, 0.369844, 9.53674e-07, 12.848, -8.39177)
+light_energy = 0.515
+shadow_enabled = true
