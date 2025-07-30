@@ -20,8 +20,8 @@ Add two other planets
 Add highscore system + basic leaderboard with placeholder scores
 Further polish (week 3/4):
 	-intro camera sequencec
-	-particle effects
-	-backgrounds (with / without atmosphere)
+	-particle effects -DONE
+	-backgrounds (with / without atmosphere) -DONE (without atmosphere)
 	-camera shake
 	-ambient particle effects
 Week 4:

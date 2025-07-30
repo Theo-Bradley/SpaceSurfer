@@ -7,7 +7,7 @@ void GameManager::_bind_methods()
 	ClassDB::bind_method(D_METHOD("set_doubleTime", "time"), &GameManager::set_doubleTime);
 
 	//add the property by setting the getters and setters function names to the ones we added above
-	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Double Time"), "set_doubleTime", "get_doubleTime");
+	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Speed Double Time"), "set_doubleTime", "get_doubleTime");
 
 	ClassDB::bind_method(D_METHOD("get_maxSpeedMultiplier"), &GameManager::get_maxSpeedMultiplier);
 	ClassDB::bind_method(D_METHOD("set_maxSpeedMultiplier", "max"), &GameManager::set_maxSpeedMultiplier);

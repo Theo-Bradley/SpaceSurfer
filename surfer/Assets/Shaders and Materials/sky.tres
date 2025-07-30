@@ -1,0 +1,24 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://y5gyda5hwg80"]
+
+[ext_resource type="Shader" uid="uid://sropdnismstx" path="res://Assets/Shaders and Materials/space_shader.gdshader" id="1_s1sb8"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6gq8t"]
+noise_type = 2
+seed = 2
+frequency = 0.0189
+fractal_type = 0
+fractal_octaves = 1
+fractal_lacunarity = 0.0
+fractal_weighted_strength = 1.0
+cellular_return_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mw02u"]
+generate_mipmaps = false
+seamless = true
+noise = SubResource("FastNoiseLite_6gq8t")
+
+[resource]
+shader = ExtResource("1_s1sb8")
+shader_parameter/skyNoise = SubResource("NoiseTexture2D_mw02u")
+shader_parameter/starThresh = 0.92
+shader_parameter/starColor = Color(1, 1, 1, 1)

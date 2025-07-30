@@ -1,11 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=12 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
 [ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_wbqg2"]
 [ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/earth_material.tres" id="3_1ihti"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
+[ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="7_6kqi2"]
 [ext_resource type="ArrayMesh" uid="uid://bk1yi0k80errn" path="res://Assets/Models/ground_plane.obj" id="7_hxhys"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wbqg2"]
+size = Vector2(300, 200)
+subdivide_width = 5
+subdivide_depth = 5
+orientation = 1
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y0opt"]
+panorama = ExtResource("7_6kqi2")
+
+[sub_resource type="Sky" id="Sky_y0opt"]
+sky_material = SubResource("PanoramaSkyMaterial_y0opt")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_gpqib"]
+background_mode = 2
+sky = SubResource("Sky_y0opt")
 
 [node name="Test" type="Node3D"]
 
@@ -20,6 +38,7 @@ process_mode = 3
 unique_name_in_owner = true
 
 [node name="Player" parent="." instance=ExtResource("1_yfa23")]
+"Stumble Cooldown" = 1.5
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
 
@@ -49,6 +68,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.81983)
 [node name="GroundPlane" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96967e-05, -90.795)
 material_override = ExtResource("3_1ihti")
+mesh = SubResource("QuadMesh_wbqg2")
+surface_material_override/0 = ExtResource("3_1ihti")
+
+[node name="GroundPlane2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96967e-05, -90.795)
+visible = false
+material_override = ExtResource("3_1ihti")
 mesh = ExtResource("7_hxhys")
 surface_material_override/0 = ExtResource("3_1ihti")
 
@@ -56,3 +82,6 @@ surface_material_override/0 = ExtResource("3_1ihti")
 transform = Transform3D(0.911065, 0.152473, 0.38303, -0.412262, 0.336952, 0.846465, 0, -0.929094, 0.369844, 9.53674e-07, 12.848, -8.39177)
 light_energy = 0.515
 shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gpqib")

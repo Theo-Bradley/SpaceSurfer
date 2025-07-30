@@ -41,7 +41,7 @@ Right={
 
 zFalloff={
 "type": "float",
-"value": 100.0
+"value": 35.0
 }
 camPos={
 "type": "vec3",
@@ -49,5 +49,5 @@ camPos={
 }
 zFalloffStrength={
 "type": "float",
-"value": 1.5
+"value": 2.0
 }

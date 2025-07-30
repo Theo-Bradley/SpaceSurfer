@@ -2,6 +2,7 @@ shader_type spatial;
 render_mode world_vertex_coords;
 
 uniform float xFalloff = 1.0;
+uniform float xFalloffStrength = 1.70;
 global uniform float zFalloff = 1.0;
 uniform vec3 baseColor: source_color = vec3(1.0);
 uniform vec3 stripeColor: source_color = vec3(0.2);
@@ -17,8 +18,9 @@ global uniform float zFalloffStrength;
 
 void vertex() {
 	// Called for every vertex the material is visible on.
-	VERTEX.y -= smoothstep(2.0, 100.0, pow(abs(VERTEX.x) / xFalloff, zFalloffStrength)); //change height based on x position
-	VERTEX.y -= pow(length(camPos.zyz - VERTEX.zyz) / zFalloff, zFalloffStrength); //.. z position
+	//VERTEX.y -= smoothstep(100.0, 100.0, pow(abs(VERTEX.x) / xFalloff, xFalloffStrength)); //change height based on x position
+	VERTEX.y -= pow(length(camPos.x - VERTEX.x) / xFalloff, xFalloffStrength) * 0.1;
+	VERTEX.y -= pow(length(camPos.z - VERTEX.z) / zFalloff, zFalloffStrength); //change height based on z position
 	UV = VERTEX.xz/scaling;
 }
 

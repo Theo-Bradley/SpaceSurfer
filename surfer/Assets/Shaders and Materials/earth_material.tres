@@ -8,6 +8,7 @@
 render_priority = 0
 shader = ExtResource("1_nvtag")
 shader_parameter/xFalloff = 10.0
+shader_parameter/xFalloffStrength = 1.7
 shader_parameter/baseColor = Color(0.38, 0.2432, 0.1748, 1)
 shader_parameter/stripeColor = Color(0.0959617, 0.43, 0.0903, 1)
 shader_parameter/spotColor = Color(0.248, 0.6804, 0.8, 1)
