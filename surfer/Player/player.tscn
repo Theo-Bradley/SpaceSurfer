@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://pnt7ablvnmmm"]
+[gd_scene load_steps=7 format=3 uid="uid://pnt7ablvnmmm"]
 
 [ext_resource type="Material" uid="uid://0hrg0hnnlgrw" path="res://Assets/Shaders and Materials/ambient_particles.tres" id="1_4ntmi"]
 [ext_resource type="BoxMesh" uid="uid://bu0xv6eb2fyo6" path="res://Player/placeholder.tres" id="1_l8h54"]
+[ext_resource type="Material" uid="uid://cytrr34ye0cqv" path="res://Assets/Shaders and Materials/ambient_particles_unlit.tres" id="2_btcbx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8h54"]
 friction = 0.0
@@ -10,6 +11,7 @@ friction = 0.0
 size = Vector3(0.528, 1.056, 0.396)
 
 [sub_resource type="SphereMesh" id="SphereMesh_btcbx"]
+material = ExtResource("2_btcbx")
 radius = 0.025
 height = 0.05
 radial_segments = 8
@@ -32,6 +34,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 80.0
 physics_material_override = SubResource("PhysicsMaterial_l8h54")
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 16
 

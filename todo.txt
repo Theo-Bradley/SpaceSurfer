@@ -18,7 +18,7 @@ Add curved distance shader+planet ground shader -DONE needs some value tweaking,
 Week 3:
 Add main menu UI
 Add two other planets
-Add highscore system + basic leaderboard with placeholder scores
+Add highscore system + basic leaderboard with placeholder scores -highscore DONE
 Further polish (week 3/4):
 	-intro camera sequencec
 	-particle effects

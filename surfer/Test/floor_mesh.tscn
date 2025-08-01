@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dttkkip37qscx"]
+
+[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/earth_material.tres" id="1_ngh04"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_wbqg2"]
+size = Vector2(300, 200)
+subdivide_width = 5
+subdivide_depth = 5
+orientation = 1
+
+[node name="FloorMesh" type="Node3D"]
+
+[node name="GroundPlane" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ngh04")
+mesh = SubResource("QuadMesh_wbqg2")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("1_ngh04")
+
+[node name="FloorSpawn" type="FloorSpawn" parent="." node_paths=PackedStringArray("Root Node")]
+"Spawn Distance" = 200.0
+"Despawn Distance" = 200.0
+"Root Node" = NodePath("..")
+"Mesh Scene Path" = "res://Test/floor_mesh.tscn"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)

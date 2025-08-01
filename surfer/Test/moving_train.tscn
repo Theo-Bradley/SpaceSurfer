@@ -2,17 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://cd65hbn413b4w" path="res://Assets/Models/glTF/monorail_trainPassenger.glb" id="1_a40r4"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_h0n4d"]
-size = Vector3(1.25, 1.5, 16.3008)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_jcpsd"]
 size = Vector3(1, 1.15692, 0.73877)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hct6l"]
-size = Vector3(0.718153, 1, 15.6566)
+size = Vector3(0.289741, 0.910278, 15.6566)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xl2gf"]
-size = Vector3(0.701966, 1, 15.5398)
+size = Vector3(0.23758, 0.882935, 15.5398)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a40r4"]
+size = Vector3(1.25, 1.5, 16.3003)
 
 [node name="Container" type="Node3D"]
 
@@ -31,10 +31,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 continuous_cd = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingObstacle/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -6.15663)
-shape = SubResource("BoxShape3D_h0n4d")
-
 [node name="FrontArea" type="Area3D" parent="MovingObstacle/RigidBody3D"]
 collision_mask = 4
 
@@ -47,7 +43,7 @@ debug_color = Color(0.996212, 0, 0.191076, 0.42)
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingObstacle/RigidBody3D/LeftArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.366889, 0.641588, -6.1669)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.581095, 0.596727, -6.1669)
 shape = SubResource("BoxShape3D_hct6l")
 debug_color = Color(0.996078, 0.843137, 0.192157, 0.419608)
 
@@ -55,7 +51,7 @@ debug_color = Color(0.996078, 0.843137, 0.192157, 0.419608)
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MovingObstacle/RigidBody3D/RightArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38088, 0.641588, -6.09813)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.613073, 0.583055, -6.09813)
 shape = SubResource("BoxShape3D_xl2gf")
 debug_color = Color(0.671892, 0.959524, 2.31028e-06, 0.419608)
 
@@ -84,3 +80,7 @@ transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -13.3045)
 
 [node name="monorail_trainPassenger9" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
 transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -11.3045)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MovingObstacle/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744754, -6.15638)
+shape = SubResource("BoxShape3D_a40r4")
