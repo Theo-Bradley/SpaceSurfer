@@ -8,6 +8,8 @@ void Player::_bind_methods()
 
 	//add the property by setting the getters and setters function names to the ones we added above
 	ADD_PROPERTY(PropertyInfo(Variant::FLOAT, "Stumble Cooldown"), "set_stumbleCooldown", "get_stumbleCooldown");
+
+	ADD_SIGNAL(MethodInfo("player_dead"));
 }
 
 void Player::_ready()
@@ -38,9 +40,15 @@ void Player::Stumble(String path)
 
 void Player::Die()
 {
-	((CollisionShape3D*)get_child(1)->get_child(0))->set_disabled(true);
-	((RigidBody3D*)get_child(1))->set_gravity_scale(0.0f);
-	((PlayerMovement*)get_child(1)->get_child(1))->shouldMove = false;
+	if (alive)
+	{
+		//((CollisionShape3D*)get_child(1)->get_child(0))->set_disabled(true);
+		//((RigidBody3D*)get_child(1))->set_gravity_scale(0.0f);
+		((PlayerMovement*)get_child(1)->get_child(1))->shouldMove = false;
+		emit_signal("player_dead");
+		print_line("die");
+	}
+	alive = false;
 }
 
 void Player::_process(double delta)

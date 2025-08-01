@@ -35,6 +35,8 @@ public:
 	void Stumble(String path);
 	void Die();
 
+	float alive = true;
+
 	float get_stumbleCooldown();
 	void set_stumbleCooldown(float time);
 

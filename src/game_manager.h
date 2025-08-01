@@ -15,6 +15,7 @@
 #include "godot_cpp/classes/button.hpp"
 #include "player_movement.h"
 #include "player.h"
+#include "coin_manager.h"
 #include "utils.h"
 
 using namespace godot;
@@ -37,14 +38,20 @@ public:
 	void PauseGame();
 	void FinishGame();
 	bool HighScore(int score, int highScore);
+	void DelayedFinish();
 
 	float elapsedTime = 0.f;
 	int score = 0;
 	int highscore = 1;
 	bool paused = false;
+	bool finished = false;
+	bool finishedOnce = false;
+	float finishTime = 0.f;
 
-	PlayerMovement* playerMovement;
-	RigidBody3D* playerRigidBody;
+	PlayerMovement* playerMovement = nullptr;
+	RigidBody3D* playerRigidBody = nullptr;
+	CoinManager* coinManager = nullptr;
+	Player* player = nullptr;
 
 	float doubleTime = 0.f;
 	float get_doubleTime();
@@ -67,4 +74,5 @@ public:
 	Label* highscoreLabel = nullptr;
 	Button* pauseButton = nullptr;
 	ProgressBar* progBar = nullptr;
+	Label* coinLabel = nullptr;
 };

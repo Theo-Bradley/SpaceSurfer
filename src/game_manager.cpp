@@ -25,6 +25,7 @@ void GameManager::_bind_methods()
 	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "UI node", PROPERTY_HINT_NODE_TYPE, "Control"), "set_UI", "get_UI");
 
 	ClassDB::bind_method(D_METHOD("PauseGame"), &GameManager::PauseGame); //expose the pause func for the pause button
+	ClassDB::bind_method(D_METHOD("FinishGame"), &GameManager::DelayedFinish); //.. for player_dead signal
 }
 
 void GameManager::StartGame()
@@ -60,13 +61,18 @@ void GameManager::PauseGame()
 
 void GameManager::FinishGame()
 {
-	//save score
-	if (HighScore(score, highscore))
+	if (!finishedOnce)
 	{
-		Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
-		Ref<JSON> resJSON = (Ref<JSON>)res;
-		resJSON->set_data(JSON::stringify(highscore));
-		ResourceSaver::get_singleton()->save(resJSON, "res://highscore.json");
+		finishedOnce = true;
+		print_line("finish_game");
+		//save score
+		if (HighScore(score, highscore))
+		{
+			Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
+			Ref<JSON> resJSON = (Ref<JSON>)res;
+			resJSON->set_data(JSON::stringify(score));
+			ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://highscore.json");
+		}
 	}
 }
 
@@ -86,14 +92,28 @@ void GameManager::_ready()
 	scoreLabel = (Label*)UINode->get_child(0);
 	highscoreLabel = (Label*)scoreLabel->get_child(0);
 	pauseButton = (Button*)UINode->get_child(1);
-	pauseButton->connect("pressed", Callable(this, "PauseGame"));
+	pauseButton->connect("pressed", Callable(this, "PauseGame")); //connect PauseGame to the pressed signal of the button
 	progBar = (ProgressBar*)UINode->get_child(2);
+	coinLabel = (Label*)UINode->get_child(3);
+	coinManager = get_tree()->get_current_scene()->get_node<CoinManager>("%CoinManager");
+	player = get_tree()->get_current_scene()->get_node<Player>("%Player");
+
+	//connect to player dead signal
+	if (player != nullptr)
+	{
+		player->connect("player_dead", Callable(this, "FinishGame"));
+	}
 	StartGame();
 }
 
 void GameManager::_process(double delta)
 {
-	if (scoreLabel != nullptr)
+	if (elapsedTime - finishTime >= 3.0f && finished) //wait 3 seconds before calling FinishGame
+	{
+		FinishGame();
+	}
+
+	if (scoreLabel != nullptr && !finished)
 	{
 		scoreLabel->set_text(TO_STRING(score));
 	}
@@ -103,17 +123,28 @@ void GameManager::_process(double delta)
 	progBar->set_value(progress);
 	//maybe hide prog bar when highscore reached
 	//or maybe get the next highscore from the leaderboard
+	if (coinManager != nullptr)
+		coinLabel->set_text(TO_STRING(coinManager->coins));
 }
 
 void GameManager::_physics_process(double delta)
 {
 	elapsedTime += delta;
 	if (playerMovement != nullptr)
-	{
 		playerMovement->speedMultiplier = Math::min(1.0f + (elapsedTime / doubleTime), maxSpeedMultiplier); //slowly increase running speed over time
-	}
 
-	score = Math::abs(playerRigidBody->get_global_position().z * scoreMultiplier);
+	if (!finished)
+		score = Math::abs(playerRigidBody->get_global_position().z * scoreMultiplier);
+}
+
+void GameManager::DelayedFinish()
+{
+	if (!finished)
+	{
+		print_line("delayed_finish");
+		finishTime = elapsedTime;
+		finished = true;
+	}
 }
 
 float GameManager::get_doubleTime()

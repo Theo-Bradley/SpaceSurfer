@@ -74,3 +74,11 @@ max_value = 1.0
 step = 0.001
 fill_mode = 3
 show_percentage = false
+
+[node name="Coin" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 61.0
+offset_right = 77.0
+offset_bottom = 95.0
+text = "0"

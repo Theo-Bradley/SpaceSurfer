@@ -28,7 +28,7 @@ sky = SubResource("Sky_y0opt")
 [node name="Test" type="Node3D"]
 
 [node name="GameManager" type="GameManager" parent="." node_paths=PackedStringArray("UI node")]
-"Double Time" = 60.0
+"Speed Double Time" = 30.0
 "Maximum Speed multipler" = 3.0
 "Score Multiplier" = 20
 "UI node" = NodePath("../UI")

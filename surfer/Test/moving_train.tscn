@@ -23,30 +23,6 @@ Rigidbody = NodePath("RigidBody3D")
 "Left Collider" = NodePath("RigidBody3D/LeftArea")
 "Right Collider" = NodePath("RigidBody3D/RightArea")
 
-[node name="monorail_trainPassenger3" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
-
-[node name="monorail_trainPassenger2" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
-
-[node name="monorail_trainPassenger4" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -5.10036)
-
-[node name="monorail_trainPassenger5" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -3.10036)
-
-[node name="monorail_trainPassenger6" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -9.20413)
-
-[node name="monorail_trainPassenger7" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -7.20413)
-
-[node name="monorail_trainPassenger8" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -13.3045)
-
-[node name="monorail_trainPassenger9" parent="MovingObstacle" instance=ExtResource("1_a40r4")]
-transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -11.3045)
-
 [node name="RigidBody3D" type="RigidBody3D" parent="MovingObstacle"]
 axis_lock_linear_x = true
 axis_lock_linear_y = true
@@ -82,3 +58,29 @@ collision_mask = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38088, 0.641588, -6.09813)
 shape = SubResource("BoxShape3D_xl2gf")
 debug_color = Color(0.671892, 0.959524, 2.31028e-06, 0.419608)
+
+[node name="MeshScenes" type="Node3D" parent="MovingObstacle/RigidBody3D"]
+
+[node name="monorail_trainPassenger3" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -1)
+
+[node name="monorail_trainPassenger2" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1)
+
+[node name="monorail_trainPassenger4" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -5.10036)
+
+[node name="monorail_trainPassenger5" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -3.10036)
+
+[node name="monorail_trainPassenger6" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -9.20413)
+
+[node name="monorail_trainPassenger7" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -7.20413)
+
+[node name="monorail_trainPassenger8" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -13.3045)
+
+[node name="monorail_trainPassenger9" parent="MovingObstacle/RigidBody3D/MeshScenes" instance=ExtResource("1_a40r4")]
+transform = Transform3D(2.5, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -11.3045)
