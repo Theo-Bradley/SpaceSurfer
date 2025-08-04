@@ -43,6 +43,13 @@ void GameManager::StartGame()
 	{
 		highscoreLabel->set_text(TO_STRING(highscore));
 	}
+
+	res = (ResourceLoader::get_singleton()->load("res://coins.json"));
+	if (res != nullptr)
+	{
+		Ref<JSON> resJSON = (Ref<JSON>)res;
+		coinManager->coins = (int)resJSON->get_data();
+	}
 }
 
 void GameManager::PauseGame()
@@ -65,13 +72,17 @@ void GameManager::FinishGame()
 	{
 		finishedOnce = true;
 		print_line("finish_game");
+		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
+		resJSON->set_data(coinManager->coins);
+		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://coins.json");
+		resJSON.unref();
 		//save score
 		if (HighScore(score, highscore))
 		{
-			Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
-			Ref<JSON> resJSON = (Ref<JSON>)res;
-			resJSON->set_data(JSON::stringify(score));
+			resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
+			resJSON->set_data(score);
 			ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://highscore.json");
+			resJSON.unref();
 		}
 	}
 }
@@ -94,7 +105,7 @@ void GameManager::_ready()
 	pauseButton = (Button*)UINode->get_child(1);
 	pauseButton->connect("pressed", Callable(this, "PauseGame")); //connect PauseGame to the pressed signal of the button
 	progBar = (ProgressBar*)UINode->get_child(2);
-	coinLabel = (Label*)UINode->get_child(3);
+	coinLabel = (Label*)UINode->get_child(3)->get_child(1);
 	coinManager = get_tree()->get_current_scene()->get_node<CoinManager>("%CoinManager");
 	player = get_tree()->get_current_scene()->get_node<Player>("%Player");
 

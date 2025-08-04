@@ -1,0 +1,238 @@
+[gd_scene load_steps=20 format=3 uid="uid://dkup1vqys51pm"]
+
+[ext_resource type="Theme" uid="uid://dkeg1ug2hyc76" path="res://Assets/default_theme.tres" id="1_uahxu"]
+[ext_resource type="Shader" uid="uid://iygvb5bc1lgu" path="res://Assets/Shaders and Materials/fixed_color.gdshader" id="2_qrfef"]
+[ext_resource type="Texture2D" uid="uid://bnaj82adi68hm" path="res://Assets/Icons/earth.png" id="2_t6syg"]
+[ext_resource type="Texture2D" uid="uid://dkuqtfd8oidtm" path="res://Assets/Icons/play.png" id="3_csrb3"]
+[ext_resource type="Texture2D" uid="uid://uq088kci83vn" path="res://Assets/Icons/earth_selected.png" id="3_d2d4f"]
+[ext_resource type="Texture2D" uid="uid://dubeiulhigklo" path="res://Assets/Icons/coins.png" id="3_fxi16"]
+[ext_resource type="Texture2D" uid="uid://cldltovf5yhk5" path="res://Assets/Icons/medal.png" id="3_wxllh"]
+[ext_resource type="Texture2D" uid="uid://bfgbycjnosai8" path="res://Assets/Icons/mars.png" id="3_y6s48"]
+[ext_resource type="Texture2D" uid="uid://b1mde08s4hkyo" path="res://Assets/Icons/earth_disabled.png" id="4_6vw7e"]
+[ext_resource type="Texture2D" uid="uid://dlqfgujgvrjyp" path="res://Assets/Icons/jupiter.png" id="4_otjfi"]
+[ext_resource type="Texture2D" uid="uid://dhfl61r2oh8mn" path="res://Assets/Icons/mars_selected.png" id="6_qrfef"]
+[ext_resource type="Texture2D" uid="uid://ts77py540d40" path="res://Assets/Icons/mars_disabled.png" id="7_csrb3"]
+[ext_resource type="Texture2D" uid="uid://unrpv88g4f5w" path="res://Assets/Icons/jupiter_selected.png" id="9_wxllh"]
+[ext_resource type="Texture2D" uid="uid://bhm5vrjfuimlp" path="res://Assets/Icons/jupiter_disabled.png" id="10_avhca"]
+[ext_resource type="Texture2D" uid="uid://dn2eyuwlogtqf" path="res://Assets/Icons/earth_disabled_selected.png" id="12_x8sin"]
+[ext_resource type="Texture2D" uid="uid://cb1g28asyo8gi" path="res://Assets/Icons/mars_disabled_selected.png" id="14_fxi16"]
+[ext_resource type="Texture2D" uid="uid://bevtkpaen5mbv" path="res://Assets/Icons/jupiter_disabled_selected.png" id="16_vsl72"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wxllh"]
+shader = ExtResource("2_qrfef")
+shader_parameter/color = Color(0.706, 0.696, 0.658, 1)
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_uahxu"]
+
+[node name="MainMenu" type="Control"]
+texture_filter = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_uahxu")
+
+[node name="MainMenuManager" type="MainMenuManager" parent="." node_paths=PackedStringArray("Button Container (Horizontal)", "Play Button", "Highscore Label")]
+"Button Container (Horizontal)" = NodePath("../LevelSelect/HBoxContainer")
+"Play Button" = NodePath("../PlayButton")
+"Highscore Label" = NodePath("../Container/HighscoreLabel")
+"tex_Play Texture" = ExtResource("3_csrb3")
+"tex_Coin Texture" = ExtResource("3_fxi16")
+"tex_map_Earth Button Texture" = ExtResource("2_t6syg")
+"tex_map_Mars Button Texture" = ExtResource("3_y6s48")
+"tex_map_Jupiter Button Texture" = ExtResource("4_otjfi")
+"tex_map_Earth Button Selected Texture" = ExtResource("3_d2d4f")
+"tex_map_Mars Button Selected Texture" = ExtResource("6_qrfef")
+"tex_map_Jupiter Button Selected Texture" = ExtResource("9_wxllh")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.468
+anchor_right = 0.468
+offset_left = -193.136
+offset_top = 66.0
+offset_right = 193.864
+offset_bottom = 528.0
+theme = ExtResource("1_uahxu")
+color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.462
+anchor_right = 0.462
+offset_left = -155.224
+offset_top = 89.0
+offset_right = 155.776
+offset_bottom = 144.0
+theme = ExtResource("1_uahxu")
+text = "Space Surfer"
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.465
+anchor_top = 0.304
+anchor_right = 0.465
+anchor_bottom = 0.304
+offset_left = -99.6801
+offset_top = -19.992
+offset_right = 100.32
+offset_bottom = 20.008
+
+[node name="HighscoreLabel" type="Label" parent="Container"]
+layout_mode = 2
+anchor_left = 0.112
+anchor_top = 0.5
+anchor_right = 0.112
+anchor_bottom = 0.5
+offset_left = 31.6
+offset_top = -12.0
+offset_right = 228.6
+offset_bottom = 15.0
+theme = ExtResource("1_uahxu")
+theme_override_font_sizes/font_size = 15
+text = "0"
+
+[node name="MedalIcon" type="TextureRect" parent="Container"]
+material = SubResource("ShaderMaterial_wxllh")
+layout_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = -21.0
+offset_right = -57.0
+offset_bottom = 19.0
+texture = ExtResource("3_wxllh")
+expand_mode = 1
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.464
+anchor_right = 0.464
+offset_left = -97.528
+offset_top = 390.0
+offset_right = 100.472
+offset_bottom = 437.0
+theme = ExtResource("1_uahxu")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.0
+offset_top = -19.5
+offset_right = 98.0
+offset_bottom = 20.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="PlayIcon" type="TextureRect" parent="PlayButton/HBoxContainer"]
+material = SubResource("ShaderMaterial_wxllh")
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_csrb3")
+expand_mode = 1
+
+[node name="CostLabel" type="Label" parent="PlayButton/HBoxContainer"]
+layout_mode = 2
+
+[node name="LevelSelect" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(194, 101)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.466
+anchor_top = 0.481
+anchor_right = 0.466
+anchor_bottom = 0.481
+offset_left = -96.832
+offset_top = -50.688
+offset_right = 97.168
+offset_bottom = 50.312
+theme = ExtResource("1_uahxu")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelSelect"]
+custom_minimum_size = Vector2(194, 101)
+layout_mode = 2
+theme = ExtResource("1_uahxu")
+
+[node name="EarthContainer" type="VBoxContainer" parent="LevelSelect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_uahxu")
+
+[node name="EarthButton" type="TextureButton" parent="LevelSelect/HBoxContainer/EarthContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_uahxu")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_uahxu")
+texture_normal = ExtResource("4_6vw7e")
+texture_pressed = ExtResource("12_x8sin")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="EarthLabel" type="Label" parent="LevelSelect/HBoxContainer/EarthContainer"]
+layout_mode = 2
+theme = ExtResource("1_uahxu")
+theme_override_font_sizes/font_size = 17
+text = "Earth"
+
+[node name="MarsContainer" type="VBoxContainer" parent="LevelSelect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_uahxu")
+
+[node name="MarsButton" type="TextureButton" parent="LevelSelect/HBoxContainer/MarsContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_uahxu")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_uahxu")
+texture_normal = ExtResource("7_csrb3")
+texture_pressed = ExtResource("14_fxi16")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MarsLabel" type="Label" parent="LevelSelect/HBoxContainer/MarsContainer"]
+layout_mode = 2
+theme = ExtResource("1_uahxu")
+theme_override_font_sizes/font_size = 17
+text = "Mars"
+
+[node name="JupiterContainer" type="VBoxContainer" parent="LevelSelect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_uahxu")
+
+[node name="JupiterButton" type="TextureButton" parent="LevelSelect/HBoxContainer/JupiterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_uahxu")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_uahxu")
+texture_normal = ExtResource("10_avhca")
+texture_pressed = ExtResource("16_vsl72")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="JupiterLabel" type="Label" parent="LevelSelect/HBoxContainer/JupiterContainer"]
+layout_mode = 2
+theme = ExtResource("1_uahxu")
+theme_override_font_sizes/font_size = 17
+text = "Jupiter"

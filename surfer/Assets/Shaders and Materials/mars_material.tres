@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://cd6vl1jkkho87"]
+
+[ext_resource type="Shader" uid="uid://cxhwjok2gfahy" path="res://Assets/Shaders and Materials/ground.gdshader" id="1_rutla"]
+[ext_resource type="Texture2D" uid="uid://dm7unmmhuixwc" path="res://Assets/Shaders and Materials/ground_noise.tres" id="2_hm0tk"]
+[ext_resource type="Texture2D" uid="uid://b5i3blsovdck5" path="res://Assets/Shaders and Materials/ground_spot_noise.tres" id="3_ppxxn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_rutla")
+shader_parameter/xFalloff = 10.0
+shader_parameter/xFalloffStrength = 1.7
+shader_parameter/baseColor = Color(0.28, 0.102667, 0.0672, 1)
+shader_parameter/stripeColor = Color(0.56, 0.4032, 0.364, 1)
+shader_parameter/spotColor = Color(0.18, 0.06822, 0.0558, 1)
+shader_parameter/baseNoise = ExtResource("2_hm0tk")
+shader_parameter/spotNoise = ExtResource("3_ppxxn")
+shader_parameter/scaling = 200.0
+shader_parameter/spotClip = 0.8
+shader_parameter/colorBanding = 8.0

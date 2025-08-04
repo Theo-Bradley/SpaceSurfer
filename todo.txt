@@ -2,6 +2,7 @@ Fix easing and add it back in
 remove player weightless ness ondeath
 add emission to post import script
 Add coin to ingame UI
+make coin manager or game manager save to coins.json
 
 Week 1:
 Moving platforms - DONE
@@ -16,7 +17,7 @@ basic polish:
 	-Add basic ingame UI -DONE
 Add curved distance shader+planet ground shader -DONE needs some value tweaking, possibly with exponent
 Week 3:
-Add main menu UI
+Add main menu UI -DONE just needs its own scene and to be able to load into the other scenes (SceneTree.change_scene_to_packed())
 Add two other planets
 Add highscore system + basic leaderboard with placeholder scores -highscore DONE
 Further polish (week 3/4):
@@ -30,4 +31,4 @@ Further polish (week 3/4):
 Week 4:
 Continue to polish
 Finish UI
-Add unlock system with planets + coins
+Add unlock system with planets + coins - DONE

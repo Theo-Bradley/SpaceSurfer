@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=11 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
 [ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_wbqg2"]
+[ext_resource type="PackedScene" uid="uid://dkup1vqys51pm" path="res://UI/MainMenu.tscn" id="3_hxhys"]
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
 [ext_resource type="PackedScene" uid="uid://dttkkip37qscx" path="res://Test/floor_mesh.tscn" id="5_wbqg2"]
 [ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="7_6kqi2"]
@@ -37,6 +38,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
 
 [node name="UI" parent="." instance=ExtResource("2_wbqg2")]
 process_mode = 3
+visible = false
+
+[node name="MainMenu" parent="." instance=ExtResource("3_hxhys")]
 
 [node name="Floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74227, -1.054, -2.25178)

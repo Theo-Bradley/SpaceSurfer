@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_aoxob")
-shader_parameter/color = Color(0.706159, 0.696493, 0.657998, 1)
+shader_parameter/color = Color(0.706, 0.696, 0.658, 1)
