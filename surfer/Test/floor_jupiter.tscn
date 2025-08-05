@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dttkkip37qscx"]
+[gd_scene load_steps=3 format=3 uid="uid://bdmncaerw0tqh"]
 
-[ext_resource type="Material" uid="uid://cqfwlbuqhsy7b" path="res://Assets/Shaders and Materials/earth_material.tres" id="1_ngh04"]
+[ext_resource type="Material" uid="uid://cs6aax4bdawij" path="res://Assets/Shaders and Materials/jupiter_material.tres" id="1_ykgoc"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_wbqg2"]
 size = Vector2(300, 200)
@@ -11,7 +11,7 @@ orientation = 1
 [node name="FloorMesh" type="Node3D"]
 
 [node name="GroundPlane" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_ngh04")
+material_override = ExtResource("1_ykgoc")
 mesh = SubResource("QuadMesh_wbqg2")
 skeleton = NodePath("../..")
 
@@ -19,5 +19,5 @@ skeleton = NodePath("../..")
 "Spawn Distance" = 200.0
 "Despawn Distance" = 200.0
 "Root Node" = NodePath("..")
-"Mesh Scene Path" = "res://Test/floor_mesh.tscn"
+"Mesh Scene Path" = "res://Test/floor_mars.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)

@@ -1,0 +1,74 @@
+[gd_scene load_steps=10 format=3 uid="uid://dn3khojdqa0rt"]
+
+[ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_omlhd"]
+[ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_n01jb"]
+[ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="3_i58pv"]
+[ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="4_rn1d7"]
+[ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="5_k2si6"]
+[ext_resource type="PackedScene" uid="uid://dttkkip37qscx" path="res://Test/floor_mesh.tscn" id="6_e3dbb"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_omlhd"]
+rayleigh_coefficient = 6.74
+night_sky = ExtResource("3_i58pv")
+
+[sub_resource type="Sky" id="Sky_hxhys"]
+sky_material = SubResource("PhysicalSkyMaterial_omlhd")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_43yfp"]
+background_mode = 2
+sky = SubResource("Sky_hxhys")
+ambient_light_source = 2
+ambient_light_color = Color(0.56643, 0.388043, 5.77569e-07, 1)
+fog_light_energy = 0.66
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.003
+volumetric_fog_albedo = Color(0.93, 0.465, 0, 1)
+
+[node name="Earth" type="Node3D"]
+
+[node name="GameManager" type="GameManager" parent="." node_paths=PackedStringArray("UI node")]
+"Speed Double Time" = 30.0
+"Maximum Speed multipler" = 3.0
+"Score Multiplier" = 20
+"UI node" = NodePath("../UI")
+process_mode = 3
+
+[node name="CoinManager" type="CoinManager" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("1_omlhd")]
+"Stumble Cooldown" = 1.5
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
+
+[node name="UI" parent="." instance=ExtResource("2_n01jb")]
+process_mode = 3
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.623911, 0.779336, -0.0580517, 0.778238, 0.626369, 0.0448023, 0.0712778, -0.0172253, -0.997308, 9.53674e-07, 12.848, -8.39177)
+light_energy = 5.076
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43yfp")
+
+[node name="Floor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74227, -1.054, -2.25178)
+
+[node name="FollowFloor" type="FollowFloor" parent="Floor"]
+"Y Offset" = -1.21
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor/FollowFloor"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FollowFloor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = ExtResource("4_rn1d7")
+
+[node name="1" parent="." instance=ExtResource("5_k2si6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.81983)
+
+[node name="FloorMesh" parent="." instance=ExtResource("6_e3dbb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.96967e-05, -90.795)

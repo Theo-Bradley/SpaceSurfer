@@ -11,13 +11,13 @@
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y0opt"]
 panorama = ExtResource("7_6kqi2")
 
-[sub_resource type="Sky" id="Sky_y0opt"]
+[sub_resource type="Sky" id="Sky_hxhys"]
 sky_material = SubResource("PanoramaSkyMaterial_y0opt")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_gpqib"]
 background_mode = 2
-sky = SubResource("Sky_y0opt")
+sky = SubResource("Sky_hxhys")
 
 [node name="Test" type="Node3D"]
 
@@ -38,7 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
 
 [node name="UI" parent="." instance=ExtResource("2_wbqg2")]
 process_mode = 3
-visible = false
 
 [node name="MainMenu" parent="." instance=ExtResource("3_hxhys")]
 

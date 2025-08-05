@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5fyeiasf0svx"]
+
+[ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_3p407"]
+[ext_resource type="PackedScene" uid="uid://bitbsp5vvo18f" path="res://UI/UI.tscn" id="2_d3utx"]
+[ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="3_lffec"]
+[ext_resource type="PackedScene" uid="uid://bdmncaerw0tqh" path="res://Test/floor_jupiter.tscn" id="4_46i3l"]
+[ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="5_m4i3t"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3d8tf"]
+panorama = ExtResource("3_lffec")
+
+[sub_resource type="Sky" id="Sky_hxhys"]
+sky_material = SubResource("PanoramaSkyMaterial_3d8tf")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_43yfp"]
+background_mode = 2
+sky = SubResource("Sky_hxhys")
+ambient_light_source = 2
+ambient_light_color = Color(0.617681, 0.278742, 0, 1)
+ambient_light_energy = 0.3
+fog_light_energy = 0.66
+volumetric_fog_density = 0.003
+volumetric_fog_albedo = Color(0.933965, 0.545489, 0, 1)
+
+[node name="Earth" type="Node3D"]
+
+[node name="GameManager" type="GameManager" parent="." node_paths=PackedStringArray("UI node")]
+"Speed Double Time" = 30.0
+"Maximum Speed multipler" = 3.0
+"Score Multiplier" = 20
+"UI node" = NodePath("../UI")
+process_mode = 3
+
+[node name="CoinManager" type="CoinManager" parent="."]
+unique_name_in_owner = true
+
+[node name="Player" parent="." instance=ExtResource("1_3p407")]
+"Stumble Cooldown" = 1.5
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
+
+[node name="UI" parent="." instance=ExtResource("2_d3utx")]
+process_mode = 3
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.793704, 0.224978, 0.565172, -0.608305, 0.293547, 0.737425, -1.35759e-08, -0.929094, 0.369844, 9.53674e-07, 12.848, -8.39177)
+light_energy = 1.3
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_43yfp")
+
+[node name="FloorMesh" parent="." instance=ExtResource("4_46i3l")]
+
+[node name="1" parent="." instance=ExtResource("5_m4i3t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.81983)

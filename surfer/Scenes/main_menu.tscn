@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdeeukxkhyod8"]
+
+[ext_resource type="PackedScene" uid="uid://dkup1vqys51pm" path="res://UI/MainMenu.tscn" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="2_1ehe0"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ce3w2"]
+panorama = ExtResource("2_1ehe0")
+
+[sub_resource type="Sky" id="Sky_y0opt"]
+sky_material = SubResource("PanoramaSkyMaterial_ce3w2")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_n45e2"]
+background_mode = 2
+sky = SubResource("Sky_y0opt")
+
+[node name="MainMenu" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="MainMenu" parent="." instance=ExtResource("1_48xlc")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_n45e2")

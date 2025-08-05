@@ -13,6 +13,8 @@
 #include "godot_cpp/classes/json.hpp"
 #include "godot_cpp/classes/texture2d.hpp"
 #include "godot_cpp/classes/texture_rect.hpp"
+#include "godot_cpp/classes/packed_scene.hpp"
+#include "godot_cpp/classes/scene_tree.hpp"
 #include "utils.h"
 
 using namespace godot;
@@ -96,4 +98,15 @@ public:
 	Ref<Texture2D> get_marsSelectedTex() const;
 	void set_jupiterSelectedTex(Ref<Texture2D> tex);
 	Ref<Texture2D> get_jupiterSelectedTex()const;
+
+	Ref<PackedScene> earthScene = nullptr;
+	Ref<PackedScene> marsScene = nullptr;
+	Ref<PackedScene> jupiterScene = nullptr;
+
+	void set_earthScene(Ref<PackedScene> scene);
+	Ref<PackedScene> get_earthScene() const;
+	void set_marsScene(Ref<PackedScene> scene);
+	Ref<PackedScene> get_marsScene() const;
+	void set_jupiterScene(Ref<PackedScene> scene);
+	Ref<PackedScene> get_jupiterScene() const;
 };

@@ -26,6 +26,23 @@ void MainMenuManager::_bind_methods()
 
 	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "Highscore Label", PROPERTY_HINT_NODE_TYPE, "Label"), "set_highscoreLabel", "get_highscoreLabel");
 
+	ADD_GROUP("Scenes", "scn_");
+	
+	ClassDB::bind_method(D_METHOD("get_earthScene"), &MainMenuManager::get_earthScene);
+	ClassDB::bind_method(D_METHOD("set_earthScene", "scene"), &MainMenuManager::set_earthScene);
+
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "scn_Earth Scene", PROPERTY_HINT_RESOURCE_TYPE, "PackedScene"), "set_earthScene", "get_earthScene");
+
+	ClassDB::bind_method(D_METHOD("get_marsScene"), &MainMenuManager::get_marsScene);
+	ClassDB::bind_method(D_METHOD("set_marsScene", "scene"), &MainMenuManager::set_marsScene);
+
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "scn_Mars Scene", PROPERTY_HINT_RESOURCE_TYPE, "PackedScene"), "set_marsScene", "get_marsScene");
+
+	ClassDB::bind_method(D_METHOD("get_jupiterScene"), &MainMenuManager::get_jupiterScene);
+	ClassDB::bind_method(D_METHOD("set_jupiterScene", "scene"), &MainMenuManager::set_jupiterScene);
+
+	ADD_PROPERTY(PropertyInfo(Variant::OBJECT, "scn_Jupiter Scene", PROPERTY_HINT_RESOURCE_TYPE, "PackedScene"), "set_jupiterScene", "get_jupiterScene");
+
 	ADD_GROUP("Textures", "tex_");
 
 	ClassDB::bind_method(D_METHOD("get_playTex"), &MainMenuManager::get_playTex);
@@ -176,7 +193,23 @@ void MainMenuManager::PressedPlay()
 {
 	if (shouldLoadMap)
 	{
-		//load selectedMap
+		switch (selectedMap)
+		{
+			case (Maps::Earth):
+				if (earthScene != nullptr)
+					get_tree()->change_scene_to_packed(earthScene);
+				break;
+
+			case (Maps::Mars):
+				if (marsScene != nullptr)
+					get_tree()->change_scene_to_packed(marsScene);
+				break;
+
+			case (Maps::Jupiter):
+				if (jupiterScene != nullptr)
+					get_tree()->change_scene_to_packed(jupiterScene);
+				break;
+		}
 	}
 	else
 	{
@@ -300,7 +333,8 @@ void MainMenuManager::SetCostLabel(int cost)
 {
 	if (shouldLoadMap)
 	{
-		playButtonCostLabel->set_text("");
+		if (playButtonCostLabel != nullptr)
+			playButtonCostLabel->set_text("");
 		playButton->set_disabled(false);
 	}
 	else
@@ -310,7 +344,8 @@ void MainMenuManager::SetCostLabel(int cost)
 		args.push_back(coins);
 		args.push_back(cost);
 		text = text%args;
-		playButtonCostLabel->set_text(text);
+		if (playButtonCostLabel != nullptr)
+			playButtonCostLabel->set_text(text);
 		if (coins < cost)
 		{
 			playButton->set_disabled(true);
@@ -400,4 +435,34 @@ Ref<Texture2D> MainMenuManager::get_jupiterSelectedTex() const
 void MainMenuManager::set_jupiterSelectedTex(Ref<Texture2D> tex)
 {
 	jupiterSelectedTex = tex;
+}
+
+void MainMenuManager::set_earthScene(Ref<PackedScene> scene)
+{
+	earthScene = scene;
+}
+
+Ref<PackedScene> MainMenuManager::get_earthScene() const
+{
+	return earthScene;
+}
+
+void MainMenuManager::set_marsScene(Ref<PackedScene> scene)
+{
+	marsScene = scene;
+}
+
+Ref<PackedScene> MainMenuManager::get_marsScene() const
+{
+	return marsScene;
+}
+
+void MainMenuManager::set_jupiterScene(Ref<PackedScene> scene)
+{
+	jupiterScene = scene;
+}
+
+Ref<PackedScene> MainMenuManager::get_jupiterScene() const
+{
+	return jupiterScene;
 }

@@ -1,15 +1,18 @@
-[gd_scene load_steps=20 format=3 uid="uid://dkup1vqys51pm"]
+[gd_scene load_steps=23 format=3 uid="uid://dkup1vqys51pm"]
 
 [ext_resource type="Theme" uid="uid://dkeg1ug2hyc76" path="res://Assets/default_theme.tres" id="1_uahxu"]
 [ext_resource type="Shader" uid="uid://iygvb5bc1lgu" path="res://Assets/Shaders and Materials/fixed_color.gdshader" id="2_qrfef"]
 [ext_resource type="Texture2D" uid="uid://bnaj82adi68hm" path="res://Assets/Icons/earth.png" id="2_t6syg"]
+[ext_resource type="PackedScene" uid="uid://dn3khojdqa0rt" path="res://Scenes/earth.tscn" id="2_yndlu"]
 [ext_resource type="Texture2D" uid="uid://dkuqtfd8oidtm" path="res://Assets/Icons/play.png" id="3_csrb3"]
 [ext_resource type="Texture2D" uid="uid://uq088kci83vn" path="res://Assets/Icons/earth_selected.png" id="3_d2d4f"]
 [ext_resource type="Texture2D" uid="uid://dubeiulhigklo" path="res://Assets/Icons/coins.png" id="3_fxi16"]
+[ext_resource type="PackedScene" uid="uid://d2sm633ifbepv" path="res://Scenes/mars.tscn" id="3_v87kc"]
 [ext_resource type="Texture2D" uid="uid://cldltovf5yhk5" path="res://Assets/Icons/medal.png" id="3_wxllh"]
 [ext_resource type="Texture2D" uid="uid://bfgbycjnosai8" path="res://Assets/Icons/mars.png" id="3_y6s48"]
 [ext_resource type="Texture2D" uid="uid://b1mde08s4hkyo" path="res://Assets/Icons/earth_disabled.png" id="4_6vw7e"]
 [ext_resource type="Texture2D" uid="uid://dlqfgujgvrjyp" path="res://Assets/Icons/jupiter.png" id="4_otjfi"]
+[ext_resource type="PackedScene" uid="uid://b5fyeiasf0svx" path="res://Scenes/jupiter.tscn" id="4_v87kc"]
 [ext_resource type="Texture2D" uid="uid://dhfl61r2oh8mn" path="res://Assets/Icons/mars_selected.png" id="6_qrfef"]
 [ext_resource type="Texture2D" uid="uid://ts77py540d40" path="res://Assets/Icons/mars_disabled.png" id="7_csrb3"]
 [ext_resource type="Texture2D" uid="uid://unrpv88g4f5w" path="res://Assets/Icons/jupiter_selected.png" id="9_wxllh"]
@@ -38,6 +41,9 @@ theme = ExtResource("1_uahxu")
 "Button Container (Horizontal)" = NodePath("../LevelSelect/HBoxContainer")
 "Play Button" = NodePath("../PlayButton")
 "Highscore Label" = NodePath("../Container/HighscoreLabel")
+"scn_Earth Scene" = ExtResource("2_yndlu")
+"scn_Mars Scene" = ExtResource("3_v87kc")
+"scn_Jupiter Scene" = ExtResource("4_v87kc")
 "tex_Play Texture" = ExtResource("3_csrb3")
 "tex_Coin Texture" = ExtResource("3_fxi16")
 "tex_map_Earth Button Texture" = ExtResource("2_t6syg")
