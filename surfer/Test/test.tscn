@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgc4kb5os34mm"]
+[gd_scene load_steps=12 format=3 uid="uid://bgc4kb5os34mm"]
 
 [ext_resource type="PackedScene" uid="uid://pnt7ablvnmmm" path="res://Player/player.tscn" id="1_yfa23"]
 [ext_resource type="Shape3D" uid="uid://ccmpocc6lyhwp" path="res://Test/floor_shape.tres" id="2_lxp54"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://du0kd3xshgxlv" path="res://Scenes/1.tscn" id="3_jda1s"]
 [ext_resource type="PackedScene" uid="uid://dttkkip37qscx" path="res://Test/floor_mesh.tscn" id="5_wbqg2"]
 [ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="7_6kqi2"]
+[ext_resource type="PackedScene" uid="uid://dcpqen7l7guip" path="res://Test/obstacle.tscn" id="8_6kqi2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y0opt"]
 panorama = ExtResource("7_6kqi2")
@@ -40,6 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75, 0.54476, -2.26775)
 process_mode = 3
 
 [node name="MainMenu" parent="." instance=ExtResource("3_hxhys")]
+visible = false
 
 [node name="Floor" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74227, -1.054, -2.25178)
@@ -48,8 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74227, -1.054, -2.25178)
 "Y Offset" = -1.21
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor/FollowFloor"]
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/FollowFloor/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -71,3 +71,6 @@ shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gpqib")
+
+[node name="Obstacle" parent="." instance=ExtResource("8_6kqi2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81347, 0.555916, -11.3339)

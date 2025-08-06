@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cfh5w64cu06mv"]
+
+[ext_resource type="Shader" uid="uid://dkroledivajxw" path="res://Assets/Shaders and Materials/blackhole.gdshader" id="1_nvltn"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_nvltn")
+shader_parameter/radius = 0.45
+shader_parameter/feathering = 0.05
+shader_parameter/edgeFeathering = 0.555
+shader_parameter/innerRadius = 0.48
+shader_parameter/baseColor = Color(0, 0, 0, 1)
+shader_parameter/edgeColor = Color(1, 0, 0.15, 1)
+shader_parameter/uv_offset = Vector2(0, 0)

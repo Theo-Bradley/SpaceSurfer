@@ -45,7 +45,6 @@ public:
 	int highscore = 1;
 	bool paused = false;
 	bool finished = false;
-	bool finishedOnce = false;
 	float finishTime = 0.f;
 
 	PlayerMovement* playerMovement = nullptr;

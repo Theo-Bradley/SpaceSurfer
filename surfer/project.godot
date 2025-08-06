@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Space Surfer"
-run/main_scene="uid://cdeeukxkhyod8"
+run/main_scene="uid://bgc4kb5os34mm"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

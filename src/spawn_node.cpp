@@ -64,6 +64,7 @@ void SpawnNode::spawnNewTree()
 {
 	if (numScenes > 0)
 	{
+		rng->randomize();
 		int sceneNum = rng->randi_range(1, numScenes);
 		String path = String("res://Scenes/") + String(std::to_string(sceneNum).c_str()) + String(".tscn");
 		print_line(path);

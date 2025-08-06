@@ -6,7 +6,7 @@ make coin manager or game manager save to coins.json
 
 Week 1:
 Moving platforms - DONE
-Varied obstacles (like white+red barriers from subsurf)
+Varied obstacles (like white+red barriers from subsurf) -DONE only one obstacle right now
 Basic game loop:
 	-Start run, run and slowly speed up until stumbled or hit an obstacle, finish run -DONE
 Week 2:
@@ -18,7 +18,7 @@ basic polish:
 Add curved distance shader+planet ground shader -DONE needs some value tweaking, possibly with exponent
 Week 3:
 Add main menu UI -DONE just needs its own scene and to be able to load into the other scenes (SceneTree.change_scene_to_packed())
-Add two other planets
+Add two other planets -DONE
 Add highscore system + basic leaderboard with placeholder scores -highscore DONE
 Further polish (week 3/4):
 	-intro camera sequencec

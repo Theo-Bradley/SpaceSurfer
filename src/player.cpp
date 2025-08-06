@@ -46,7 +46,6 @@ void Player::Die()
 		//((RigidBody3D*)get_child(1))->set_gravity_scale(0.0f);
 		((PlayerMovement*)get_child(1)->get_child(1))->shouldMove = false;
 		emit_signal("player_dead");
-		print_line("die");
 	}
 	alive = false;
 }

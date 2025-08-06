@@ -17,6 +17,7 @@
 #include "follow_floor.h"
 #include "floor_spawn.h"
 #include "main_menu_manager.h"
+#include "damage_obstacle.h"
 
 using namespace godot;
 
@@ -38,6 +39,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	GDREGISTER_RUNTIME_CLASS(FollowFloor);
 	GDREGISTER_RUNTIME_CLASS(FloorSpawn);
 	GDREGISTER_RUNTIME_CLASS(MainMenuManager);
+	GDREGISTER_RUNTIME_CLASS(DamageObstacle);
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {

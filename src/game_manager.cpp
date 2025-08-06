@@ -68,23 +68,7 @@ void GameManager::PauseGame()
 
 void GameManager::FinishGame()
 {
-	if (!finishedOnce)
-	{
-		finishedOnce = true;
-		print_line("finish_game");
-		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
-		resJSON->set_data(coinManager->coins);
-		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://coins.json");
-		resJSON.unref();
-		//save score
-		if (HighScore(score, highscore))
-		{
-			resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
-			resJSON->set_data(score);
-			ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://highscore.json");
-			resJSON.unref();
-		}
-	}
+	get_tree()->change_scene_to_file("res://Scenes/main_menu.tscn");
 }
 
 bool GameManager::HighScore(int score, int highScore)
@@ -155,6 +139,19 @@ void GameManager::DelayedFinish()
 		print_line("delayed_finish");
 		finishTime = elapsedTime;
 		finished = true;
+		print_line("finish_game");
+		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
+		resJSON->set_data(coinManager->coins);
+		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://coins.json");
+		resJSON.unref();
+		//save score
+		if (HighScore(score, highscore))
+		{
+			resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
+			resJSON->set_data(score);
+			ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://highscore.json");
+			resJSON.unref();
+		}
 	}
 }
 
