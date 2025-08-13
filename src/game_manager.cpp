@@ -33,7 +33,7 @@ void GameManager::StartGame()
 	elapsedTime = 0.0f;
 
 	//load highscore off disk
-	Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
+	Ref<Resource> res = (ResourceLoader::get_singleton()->load("user://highscore.json"));
 	if (res != nullptr)
 	{
 		Ref<JSON> resJSON = (Ref<JSON>)res;
@@ -44,7 +44,7 @@ void GameManager::StartGame()
 		highscoreLabel->set_text(TO_STRING(highscore));
 	}
 
-	res = (ResourceLoader::get_singleton()->load("res://coins.json"));
+	res = (ResourceLoader::get_singleton()->load("user://coins.json"));
 	if (res != nullptr)
 	{
 		Ref<JSON> resJSON = (Ref<JSON>)res;
@@ -136,21 +136,19 @@ void GameManager::DelayedFinish()
 {
 	if (!finished)
 	{
-		print_line("delayed_finish");
 		finishTime = elapsedTime;
 		finished = true;
-		print_line("finish_game");
 		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
 		resJSON->set_data(coinManager->coins);
 		print_line(coinManager->coins);
-		ResourceSaver::get_singleton()->save(resJSON, "res://coins.json");
+		ResourceSaver::get_singleton()->save(resJSON, "user://coins.json");
 		resJSON.unref();
 		//save score
 		if (HighScore(score, highscore))
 		{
 			resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
 			resJSON->set_data(score);
-			ResourceSaver::get_singleton()->save(resJSON, "res://highscore.json");
+			ResourceSaver::get_singleton()->save(resJSON, "user://highscore.json");
 			resJSON.unref();
 		}
 	}

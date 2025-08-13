@@ -101,7 +101,7 @@ void MainMenuManager::_bind_methods()
 void MainMenuManager::_ready()
 {
 	//load highscore off disk
-	Ref<Resource> res = (ResourceLoader::get_singleton()->load("res://highscore.json"));
+	Ref<Resource> res = (ResourceLoader::get_singleton()->load("user://highscore.json"));
 	int highscore = 0;
 	if (res != nullptr)
 	{
@@ -112,13 +112,13 @@ void MainMenuManager::_ready()
 	{
 		highscoreLabel->set_text(TO_STRING(highscore));
 	}
-	res = (ResourceLoader::get_singleton()->load("res://map_unlock.json")); //setup map flag to be processed, which unlocks map buttons
+	res = (ResourceLoader::get_singleton()->load("user://map_unlock.json")); //setup map flag to be processed, which unlocks map buttons
 	if (res != nullptr)
 	{
 		Ref<JSON> resJSON = (Ref<JSON>)res;
 		mapFlag = (unsigned char)resJSON->get_data();
 	}
-	res = (ResourceLoader::get_singleton()->load("res://coins.json"));
+	res = (ResourceLoader::get_singleton()->load("user://coins.json"));
 	if (res != nullptr)
 	{
 		Ref<JSON> resJSON = (Ref<JSON>)res;
@@ -150,12 +150,12 @@ MainMenuManager::~MainMenuManager()
 		//save coins and mapflag to disk
 		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON));
 		resJSON->set_data(mapFlag);
-		ResourceSaver::get_singleton()->save(resJSON, "res://map_unlock.json");
+		ResourceSaver::get_singleton()->save(resJSON, "user://map_unlock.json");
 		resJSON.unref();
 
 		resJSON = Ref<JSON>(memnew(JSON));
 		resJSON->set_data(coins);
-		ResourceSaver::get_singleton()->save(resJSON, "res://coins.json");
+		ResourceSaver::get_singleton()->save(resJSON, "user://coins.json");
 		resJSON.unref();
 	}
 }
@@ -198,16 +198,19 @@ void MainMenuManager::PressedPlay()
 			case (Maps::Earth):
 				if (earthScene != nullptr)
 					get_tree()->change_scene_to_packed(earthScene);
+				ProjectSettings::get_singleton()->set_setting("physics/3d/default_gravity", 9.81);
 				break;
 
 			case (Maps::Mars):
 				if (marsScene != nullptr)
 					get_tree()->change_scene_to_packed(marsScene);
+				ProjectSettings::get_singleton()->set_setting("physics/3d/default_gravity", 3.73);
 				break;
 
 			case (Maps::Jupiter):
 				if (jupiterScene != nullptr)
 					get_tree()->change_scene_to_packed(jupiterScene);
+				ProjectSettings::get_singleton()->set_setting("physics/3d/default_gravity", 24.79);
 				break;
 		}
 	}

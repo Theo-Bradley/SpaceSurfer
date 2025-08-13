@@ -19,5 +19,5 @@ skeleton = NodePath("../..")
 "Spawn Distance" = 200.0
 "Despawn Distance" = 200.0
 "Root Node" = NodePath("..")
-"Mesh Scene Path" = "res://Test/floor_mars.tscn"
+"Mesh Scene Path" = "res://Test/floor_jupiter.tscn"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)

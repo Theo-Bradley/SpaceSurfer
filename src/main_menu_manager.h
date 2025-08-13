@@ -15,6 +15,7 @@
 #include "godot_cpp/classes/texture_rect.hpp"
 #include "godot_cpp/classes/packed_scene.hpp"
 #include "godot_cpp/classes/scene_tree.hpp"
+#include "godot_cpp/classes/project_settings.hpp"
 #include "utils.h"
 
 using namespace godot;
