@@ -54,4 +54,4 @@ out/*
 src/*.obj
 
 #ignore export folder
-Export/*
+surfer/bin/windows/Export/*
