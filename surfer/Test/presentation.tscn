@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck6nu7g4aox8h"]
+
+[ext_resource type="PackedScene" uid="uid://dcpqen7l7guip" path="res://Test/obstacle.tscn" id="2_f70xg"]
+[ext_resource type="Texture2D" uid="uid://hhgvasgt4a3b" path="res://Assets/Skybox/skybox/panorama_image.png" id="2_umx7p"]
+[ext_resource type="PackedScene" uid="uid://dla74sk2kcv0g" path="res://Test/presentation_obstacle.tscn" id="3_f70xg"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_f70xg"]
+rayleigh_coefficient = 6.74
+night_sky = ExtResource("2_umx7p")
+
+[sub_resource type="Sky" id="Sky_omlhd"]
+sky_material = SubResource("PhysicalSkyMaterial_f70xg")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_vg1yh"]
+background_mode = 2
+sky = SubResource("Sky_omlhd")
+ambient_light_source = 2
+ambient_light_color = Color(0.56643, 0.388043, 5.77569e-07, 1)
+fog_light_energy = 0.66
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.003
+volumetric_fog_albedo = Color(0.93, 0.465, 0, 1)
+
+[node name="Presentation" type="Node3D"]
+
+[node name="CamPivot" type="Node3D" parent="."]
+transform = Transform3D(0.520964, 0, -0.853578, 0, 1, 0, 0.853578, 0, 0.520964, -0.146213, 0, -0.209601)
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot"]
+transform = Transform3D(0.929802, 0.157049, -0.332872, 0, 0.904396, 0.426695, 0.36806, -0.396742, 0.840909, -0.155339, 0.50597, 1.26873)
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.836158, 0.546176, 0.050327, 0.445124, -0.729329, 0.519562, 0.320477, -0.412034, -0.852949, 14.6874, 12.848, -11.6157)
+light_energy = 5.076
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vg1yh")
+
+[node name="Obstacle" parent="." instance=ExtResource("2_f70xg")]
+transform = Transform3D(-0.136494, 0, -0.990641, 0, 1, 0, 0.990641, 0, -0.136494, -0.188666, 0, 0.131609)
+visible = false
+
+[node name="Obstacle2" parent="." instance=ExtResource("3_f70xg")]
+transform = Transform3D(-0.136494, 0, -0.990641, 0, 1, 0, 0.990641, 0, -0.136494, 0, 0, 0)

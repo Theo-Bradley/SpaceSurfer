@@ -1,8 +1,4 @@
 Fix easing and add it back in
-remove player weightless ness ondeath
-add emission to post import script
-Add coin to ingame UI
-make coin manager or game manager save to coins.json
 
 Week 1:
 Moving platforms - DONE
@@ -23,7 +19,7 @@ Add highscore system + basic leaderboard with placeholder scores -highscore DONE
 Further polish (week 3/4):
 	-intro camera sequencec
 	-particle effects
-		-coin
+		-coin - DONE
 		-high score achieved
 	-backgrounds (with / without atmosphere) -DONE (without atmosphere)
 	-camera shake

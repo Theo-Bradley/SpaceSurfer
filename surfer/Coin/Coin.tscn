@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://lsx6j6sfhjnb"]
+[gd_scene load_steps=7 format=3 uid="uid://lsx6j6sfhjnb"]
 
 [ext_resource type="PackedScene" uid="uid://bf6m67hqobmk6" path="res://Assets/Models/rock.blend" id="1_k1tds"]
+[ext_resource type="PackedScene" uid="uid://0kn8clhe8n40" path="res://Coin/coin_particles.tscn" id="1_tr2r7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k1tds"]
 radius = 0.35538
@@ -50,10 +51,9 @@ _data = {
 &"idle": SubResource("Animation_k1tds")
 }
 
-[node name="Coin" type="Node3D"]
-
-[node name="Coin" type="Coin" parent="." node_paths=PackedStringArray("Coin Area")]
-"Coin Area" = NodePath("../Area3D")
+[node name="Coin" type="Coin" node_paths=PackedStringArray("Coin Area")]
+"Coin Area" = NodePath("Area3D")
+"Particles Scene" = ExtResource("1_tr2r7")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_mask = 4

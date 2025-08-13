@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://66fjiqnf7fbu"]
+
+[ext_resource type="Shader" uid="uid://cxhwjok2gfahy" path="res://Assets/Shaders and Materials/ground.gdshader" id="1_fgwd1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qbfxm"]
+noise_type = 3
+seed = 3
+frequency = 0.0023
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fgwd1"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_qbfxm")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_psptn"]
+noise_type = 2
+seed = 5
+frequency = 0.0057
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qbfxm"]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource("FastNoiseLite_psptn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ntyb"]
+render_priority = 0
+shader = ExtResource("1_fgwd1")
+shader_parameter/xFalloff = 10.0
+shader_parameter/xFalloffStrength = 1.7
+shader_parameter/baseColor = Color(0.38, 0.2432, 0.1748, 1)
+shader_parameter/stripeColor = Color(0.0959617, 0.43, 0.0903, 1)
+shader_parameter/spotColor = Color(0.248, 0.6804, 0.8, 1)
+shader_parameter/baseNoise = SubResource("NoiseTexture2D_fgwd1")
+shader_parameter/spotNoise = SubResource("NoiseTexture2D_qbfxm")
+shader_parameter/scaling = 200.0
+shader_parameter/spotClip = 0.7
+shader_parameter/colorBanding = 6.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_wbqg2"]
+size = Vector2(300, 200)
+subdivide_width = 5
+subdivide_depth = 5
+orientation = 1
+
+[node name="FloorMesh" type="Node3D"]
+
+[node name="GroundPlane" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_2ntyb")
+mesh = SubResource("QuadMesh_wbqg2")
+
+[node name="FloorSpawn" type="FloorSpawn" parent="." node_paths=PackedStringArray("Root Node")]
+"Spawn Distance" = 200.0
+"Despawn Distance" = 200.0
+"Root Node" = NodePath("..")
+"Mesh Scene Path" = "res://Test/floor_mesh.tscn"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -200)

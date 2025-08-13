@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dla74sk2kcv0g"]
+
+[ext_resource type="Shader" uid="uid://dkroledivajxw" path="res://Assets/Shaders and Materials/blackhole.gdshader" id="1_krjme"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bc5by"]
+render_priority = 0
+shader = ExtResource("1_krjme")
+shader_parameter/radius = 0.45
+shader_parameter/feathering = 0.05
+shader_parameter/edgeFeathering = 1.0
+shader_parameter/innerRadius = 0.45
+shader_parameter/baseColor = Color(0, 0, 0, 1)
+shader_parameter/edgeColor = Color(1, 0, 0.15, 1)
+shader_parameter/uv_offset = Vector2(0, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_ej3u7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u4d2i"]
+radius = 0.451658
+
+[node name="Obstacle" type="DamageObstacle" node_paths=PackedStringArray("Hit Area")]
+"Hit Area" = NodePath("Area3D")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_bc5by")
+mesh = SubResource("QuadMesh_ej3u7")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_u4d2i")
+debug_color = Color(0.997828, 0, 0.157054, 0.42)

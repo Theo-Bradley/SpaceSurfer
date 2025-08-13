@@ -150,12 +150,12 @@ MainMenuManager::~MainMenuManager()
 		//save coins and mapflag to disk
 		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON));
 		resJSON->set_data(mapFlag);
-		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://map_unlock.json");
+		ResourceSaver::get_singleton()->save(resJSON, "res://map_unlock.json");
 		resJSON.unref();
 
 		resJSON = Ref<JSON>(memnew(JSON));
 		resJSON->set_data(coins);
-		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://coins.json");
+		ResourceSaver::get_singleton()->save(resJSON, "res://coins.json");
 		resJSON.unref();
 	}
 }

@@ -11,13 +11,13 @@
 rayleigh_coefficient = 6.74
 night_sky = ExtResource("3_i58pv")
 
-[sub_resource type="Sky" id="Sky_hxhys"]
+[sub_resource type="Sky" id="Sky_omlhd"]
 sky_material = SubResource("PhysicalSkyMaterial_omlhd")
 process_mode = 1
 
 [sub_resource type="Environment" id="Environment_43yfp"]
 background_mode = 2
-sky = SubResource("Sky_hxhys")
+sky = SubResource("Sky_omlhd")
 ambient_light_source = 2
 ambient_light_color = Color(0.56643, 0.388043, 5.77569e-07, 1)
 fog_light_energy = 0.66
@@ -47,6 +47,7 @@ process_mode = 3
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.623911, 0.779336, -0.0580517, 0.778238, 0.626369, 0.0448023, 0.0712778, -0.0172253, -0.997308, 9.53674e-07, 12.848, -8.39177)
+light_color = Color(1, 0.774793, 0.656172, 1)
 light_energy = 5.076
 shadow_enabled = true
 

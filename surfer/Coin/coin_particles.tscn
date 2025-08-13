@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://0kn8clhe8n40"]
+
+[sub_resource type="Curve" id="Curve_cifpp"]
+_data = [Vector2(0.426471, 1), 0.0, -0.497518, 0, 0, Vector2(1, 0), -5.50113, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nxj5u"]
+curve = SubResource("Curve_cifpp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_28ccp"]
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_nxj5u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cifpp"]
+albedo_color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_yvi28"]
+material = SubResource("StandardMaterial3D_cifpp")
+radius = 0.05
+height = 0.1
+
+[node name="CoinParticles" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.312699, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.66
+process_material = SubResource("ParticleProcessMaterial_28ccp")
+draw_pass_1 = SubResource("SphereMesh_yvi28")

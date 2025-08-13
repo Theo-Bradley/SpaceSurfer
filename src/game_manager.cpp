@@ -142,14 +142,15 @@ void GameManager::DelayedFinish()
 		print_line("finish_game");
 		Ref<JSON>resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
 		resJSON->set_data(coinManager->coins);
-		ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://coins.json");
+		print_line(coinManager->coins);
+		ResourceSaver::get_singleton()->save(resJSON, "res://coins.json");
 		resJSON.unref();
 		//save score
 		if (HighScore(score, highscore))
 		{
 			resJSON = Ref<JSON>(memnew(JSON)); //will automatically delete itself
 			resJSON->set_data(score);
-			ResourceSaver::get_singleton()->save((Ref<Resource>)resJSON, "res://highscore.json");
+			ResourceSaver::get_singleton()->save(resJSON, "res://highscore.json");
 			resJSON.unref();
 		}
 	}
